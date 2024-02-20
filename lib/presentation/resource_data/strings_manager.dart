@@ -1,0 +1,39 @@
+class AppStrings {
+  static const skip = "SKIP";
+  static const doctorsAppointment = "Doctors Appointment";
+  static const login = "Log In";
+  static const signUp = "Sign Up";
+  static const appointmentYourDoctor = "Appointment Your Doctor";
+  static const dontHaveAnyAccount = "Don't have any account?";
+  static const createAccount = "Create Account";
+  static const enterYourPassword = "Enter Your Password";
+  static const enterUserName = "Enter userName";
+  static const fullName = "Full Name";
+  static const emailAddress = "Email Address";
+  static const phoneNumber = "Phone Number";
+  static const password = "Password";
+  static const confirmPassword = "Confirm Password";
+
+  static const pleaseEnter = "please Enter";
+  static const retryAgain = "Retry Again";
+  static const ok = "Ok";
+  static const yes = "Yes";
+  static const no = "No";
+  static const loading = "Loading";
+  static const success = "Success";
+  static const movies = "Movies";
+  static const noRouteFound = "No Route Found";
+  static const moviesFetchedSuccessfully = "Movies Fetched Successfully";
+  static const noMoreDataToLoad = "No more data to load";
+  static const topRated = "Top Rated";
+  static const popular = "Popular";
+  static const topRatedType = "top_rated";
+  static const popularType = "popular";
+  static const overview = "Overview : ";
+  static const originalTitle = "Original Title : ";
+  static const originalLanguage = "Original Language : ";
+  static const releaseDate = "Release Date : ";
+  static const adult = "Adult : ";
+  static const voteAverage = "Vote Average";
+  static const moviewNotExist = "Movie not exist";
+}
