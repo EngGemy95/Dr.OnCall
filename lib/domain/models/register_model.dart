@@ -3,14 +3,14 @@ import 'package:equatable/equatable.dart';
 class RegisterModel extends Equatable {
   final int code;
   final String message;
-  final String email;
+  final String? data;
 
-  RegisterModel({
+  const RegisterModel({
     required this.code,
     required this.message,
-    required this.email,
+    this.data,
   });
 
   @override
-  List<Object?> get props => [code, message, email];
+  List<Object?> get props => [code, message, data];
 }

@@ -13,7 +13,7 @@ class _AppServiceClient implements AppServiceClient {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'http://192.168.11.77:3000/api/';
+    baseUrl ??= 'http://192.168.11.77:1000/api/';
   }
 
   final Dio _dio;
@@ -25,10 +25,11 @@ class _AppServiceClient implements AppServiceClient {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = registerRequest;
+    final _data = <String, dynamic>{};
+    _data.addAll(registerRequest.toJson());
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<RegisterResponse>(Options(
-      method: 'GET',
+      method: 'POST',
       headers: _headers,
       extra: _extra,
     )
@@ -48,14 +49,15 @@ class _AppServiceClient implements AppServiceClient {
   }
 
   @override
-  Future<ApiResponse> login(LoginRequest loginRequest) async {
+  Future<LoginResponse> login(LoginRequest loginRequest) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = loginRequest;
+    final _data = <String, dynamic>{};
+    _data.addAll(loginRequest.toJson());
     final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<ApiResponse>(Options(
-      method: 'GET',
+        .fetch<Map<String, dynamic>>(_setStreamType<LoginResponse>(Options(
+      method: 'POST',
       headers: _headers,
       extra: _extra,
     )
@@ -70,7 +72,7 @@ class _AppServiceClient implements AppServiceClient {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = ApiResponse.fromJson(_result.data!);
+    final value = LoginResponse.fromJson(_result.data!);
     return value;
   }
 

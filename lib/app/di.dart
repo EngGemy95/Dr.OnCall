@@ -1,8 +1,8 @@
-import 'package:blood_donation/data/repository/repository_login_impl.dart';
-import 'package:blood_donation/domain/repository/login_repository.dart';
-import 'package:blood_donation/domain/usecase/login_usecase.dart';
-import 'package:blood_donation/domain/usecase/register_usecase.dart';
-import 'package:blood_donation/presentation/bloc/authenticate/authenticate_bloc.dart';
+import 'package:Dr_OnCall/data/repository/repository_login_impl.dart';
+import 'package:Dr_OnCall/domain/repository/login_repository.dart';
+import 'package:Dr_OnCall/domain/usecase/login_usecase.dart';
+import 'package:Dr_OnCall/domain/usecase/register_usecase.dart';
+import 'package:Dr_OnCall/presentation/bloc/Login/login_bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
@@ -14,6 +14,7 @@ import '../data/network/dio_factory.dart';
 import '../data/network/network_info.dart';
 import '../data/repository/repository_register_impl.dart';
 import '../domain/repository/register_repository.dart';
+import '../presentation/bloc/password/password_visibility_bloc.dart';
 import './app_prefs.dart';
 
 final instance = GetIt.instance;
@@ -26,6 +27,7 @@ Future<void> initAppModule() async {
   final sharedPrefs = await SharedPreferences.getInstance();
 
   instance.registerLazySingleton<SharedPreferences>(() => sharedPrefs);
+
   // app prefs instance
   instance
       .registerLazySingleton<AppPreference>(() => AppPreference(sharedPrefs));
@@ -38,7 +40,11 @@ Future<void> initAppModule() async {
   // App Service client
   instance.registerLazySingleton<AppServiceClient>(() => AppServiceClient(dio));
 
-  // remote data source
+  //network info instance
+  instance.registerLazySingleton<NetworkInfo>(
+      () => NetworkInfoImpl(InternetConnectionChecker()));
+
+  // Data Source
   instance.registerLazySingleton<RemoteDataSource>(
       () => RemoteDataSourceImpl(instance<AppServiceClient>()));
 
@@ -49,42 +55,25 @@ Future<void> initAppModule() async {
   instance.registerLazySingleton<LoginRepository>(
       () => LoginRepositoryImpl(instance(), instance(), instance()));
 
-  //network info instance
-  instance.registerLazySingleton<NetworkInfo>(
-      () => NetworkInfoImpl(InternetConnectionChecker()));
+// Bloc instance
+  instance.registerFactory(() => SignInBloc(loginUseCase: instance()));
+  instance.registerFactory(() => PasswordVisibilityBloc());
 
-// Bloc
+  // UseCases instance
 
-  instance.registerFactory(() => AuthenticateBloc(loginUseCase: instance()));
+  instance.registerLazySingleton<RegisterUseCase>(
+      () => RegisterUseCase(instance()));
 
-  // UseCases
-  if (!GetIt.I.isRegistered<LoginUseCase>()) {
-    //GetMoviesUseCase instance
-    instance
-        .registerLazySingleton<LoginUseCase>(() => LoginUseCase(instance()));
-  }
-  if (!GetIt.I.isRegistered<RegisterUseCase>()) {
-    //GetMoviesUseCase instance
-    instance.registerLazySingleton<RegisterUseCase>(
-        () => RegisterUseCase(instance()));
-  }
+  instance.registerLazySingleton<LoginUseCase>(() => LoginUseCase(instance()));
 }
 
-unRegisterAll() {
-  instance.unregister<SharedPreferences>();
-  instance.unregister<AppPreference>();
-  instance.unregister<DioFactory>();
-  instance.unregister<AppServiceClient>();
-  instance.unregister<RemoteDataSource>();
-  instance.unregister<RegisterRepository>();
-  instance.unregister<NetworkInfo>();
-  instance.unregister<RegisterUseCase>();
-}
-
-// initMoviesModule() async {
-//   if (!GetIt.I.isRegistered<RegisterUseCase>()) {
-//     //GetMoviesUseCase instance
-//     instance
-//         .registerFactory<RegisterUseCase>(() => RegisterUseCase(instance()));
-//   }
+// unRegisterAll() {
+//   instance.unregister<SharedPreferences>();
+//   instance.unregister<AppPreference>();
+//   instance.unregister<DioFactory>();
+//   instance.unregister<AppServiceClient>();
+//   instance.unregister<RemoteDataSource>();
+//   instance.unregister<RegisterRepository>();
+//   instance.unregister<NetworkInfo>();
+//   instance.unregister<RegisterUseCase>();
 // }

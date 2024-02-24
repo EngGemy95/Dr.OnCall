@@ -1,5 +1,6 @@
-import 'package:blood_donation/app/di.dart';
-import 'package:blood_donation/presentation/bloc/authenticate/authenticate_bloc.dart';
+import 'package:Dr_OnCall/app/di.dart' as di;
+import 'package:Dr_OnCall/presentation/bloc/Login/login_bloc.dart';
+import 'package:Dr_OnCall/presentation/bloc/password/password_visibility_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
@@ -27,7 +28,8 @@ class _MyAppState extends State<MyApp> {
     return Sizer(builder: (context, orientation, deviceType) {
       return MultiBlocProvider(
         providers: [
-          BlocProvider(create: (_) => instance<AuthenticateBloc>()),
+          BlocProvider(create: (_) => di.instance<SignInBloc>()),
+          BlocProvider(create: (_) => di.instance<PasswordVisibilityBloc>()),
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,

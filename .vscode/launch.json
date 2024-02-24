@@ -10,18 +10,18 @@
             "request": "attach"
         },
         {
-            "name": "blood_donation",
+            "name": "Dr_OnCall",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "blood_donation (profile mode)",
+            "name": "Dr_OnCall (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "blood_donation (release mode)",
+            "name": "Dr_OnCall (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"

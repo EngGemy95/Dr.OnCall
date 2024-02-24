@@ -1,4 +1,5 @@
-import 'package:blood_donation/presentation/resource_data/route_manager.dart';
+import 'package:Dr_OnCall/presentation/resource_data/color_manager.dart';
+import 'package:Dr_OnCall/presentation/resource_data/route_manager.dart';
 import 'package:flutter/material.dart';
 
 import '../resource_data/assets_manager.dart';
@@ -27,10 +28,10 @@ class WelcomeMobileScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushNamed(context, Routes.login);
                   },
-                  child: const Text(
+                  child: Text(
                     AppStrings.skip,
                     style: TextStyle(
-                      color: Color(0xFF7165D6),
+                      color: ColorManager.primary,
                       fontSize: AppSize.s20,
                     ),
                   ),
@@ -47,10 +48,10 @@ class WelcomeMobileScreen extends StatelessWidget {
             const SizedBox(
               height: AppSize.s50,
             ),
-            const Text(
+            Text(
               AppStrings.doctorsAppointment,
               style: TextStyle(
-                color: Color(0xFF7165D6),
+                color: ColorManager.primary,
                 fontSize: AppSize.s35,
                 fontWeight: FontWeight.bold,
                 letterSpacing: AppSize.s1,
@@ -86,7 +87,7 @@ class WelcomeMobileScreen extends StatelessWidget {
                   },
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),

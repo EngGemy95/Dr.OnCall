@@ -4,13 +4,12 @@ part 'RegisterResponse.g.dart';
 
 @JsonSerializable()
 class RegisterResponse extends Equatable {
-  @JsonKey(name: "code")
-  final int code;
+  final int status;
   final String message;
-  final String email;
+  final String? data;
 
   const RegisterResponse(
-      {required this.code, required this.message, required this.email});
+      {required this.status, required this.message, this.data});
 
   factory RegisterResponse.fromJson(Map<String, dynamic> json) =>
       _$RegisterResponseFromJson(json);
@@ -18,5 +17,5 @@ class RegisterResponse extends Equatable {
   Map<String, dynamic> toJson() => _$RegisterResponseToJson(this);
 
   @override
-  List<Object?> get props => [code, message];
+  List<Object?> get props => [status, message, data];
 }

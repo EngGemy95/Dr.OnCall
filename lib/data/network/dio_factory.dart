@@ -21,6 +21,10 @@ class DioFactory {
       headers: headers,
       receiveTimeout: const Duration(milliseconds: Constants.apiTimeOut),
       sendTimeout: const Duration(milliseconds: Constants.apiTimeOut),
+      validateStatus: (status) {
+        // Allow status codes 200 and 400
+        return status == 200 || status == 400;
+      },
     );
 
     if (!kReleaseMode) {
@@ -29,6 +33,7 @@ class DioFactory {
         requestHeader: true,
         requestBody: true,
         responseHeader: true,
+        responseBody: true,
       ));
     }
 

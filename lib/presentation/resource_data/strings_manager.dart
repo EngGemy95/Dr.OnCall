@@ -6,8 +6,8 @@ class AppStrings {
   static const appointmentYourDoctor = "Appointment Your Doctor";
   static const dontHaveAnyAccount = "Don't have any account?";
   static const createAccount = "Create Account";
-  static const enterYourPassword = "Enter Your Password";
-  static const enterUserName = "Enter userName";
+  static const enterPassword = "Enter Password";
+  static const enterEmail = "Enter Email";
   static const fullName = "Full Name";
   static const emailAddress = "Email Address";
   static const phoneNumber = "Phone Number";

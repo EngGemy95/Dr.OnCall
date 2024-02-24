@@ -1,6 +1,6 @@
 {
-    "name": "blood_donation",
-    "short_name": "blood_donation",
+    "name": "Dr_OnCall",
+    "short_name": "Dr_OnCall",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

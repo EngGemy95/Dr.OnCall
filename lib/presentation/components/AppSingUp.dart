@@ -1,5 +1,5 @@
-import 'package:blood_donation/presentation/components/AppSignIn.dart';
-import 'package:blood_donation/presentation/widgets/custom_button.dart';
+import 'package:Dr_OnCall/presentation/components/AppSignIn.dart';
+import 'package:Dr_OnCall/presentation/widgets/custom_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

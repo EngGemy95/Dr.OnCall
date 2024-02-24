@@ -1,27 +1,45 @@
-import 'package:blood_donation/data/response/ApiResponse.dart';
-import 'package:blood_donation/data/response/RegisterResponse.dart';
-import 'package:blood_donation/domain/models/register_model.dart';
+import 'package:Dr_OnCall/data/response/login_response.dart';
+import 'package:Dr_OnCall/data/response/RegisterResponse.dart';
+import 'package:Dr_OnCall/domain/models/login_model.dart';
+import 'package:Dr_OnCall/domain/models/register_model.dart';
 import '../../app/constants.dart';
 import '../../app/extensions.dart';
-import '../../domain/models/api_model.dart';
 
 extension RegisterMapper on RegisterResponse? {
   RegisterModel toDomain() {
     return RegisterModel(
-      code: this?.code.orZero() ?? Constants.zero,
+      code: this?.status.orZero() ?? Constants.zero,
       message: this?.message.orEmpty() ?? Constants.empty,
-      email: this?.email.orEmpty() ?? Constants.empty,
+      data: this?.data != null ? this!.data : null,
     );
   }
 }
 
-extension ApiMapper on ApiResponse? {
-  ApiModel toDomain() {
-    return ApiModel(
-      code: this?.code.orZero() ?? Constants.zero,
+extension LoginMapper on LoginResponse? {
+  LoginModel toDomain() {
+    return LoginModel(
+      status: this?.status.orZero() ?? Constants.zero,
       message: this?.message.orEmpty() ?? Constants.empty,
-      token: this?.token.orEmpty() ?? Constants.empty,
-      data: this?.token.orEmpty() ?? Constants.empty,
+      data: this?.data != null ? this!.data.toDomain() : null,
+    );
+  }
+}
+
+extension UserMapper on UserResponse? {
+  User toDomain() {
+    return User(
+      name: this?.name.orEmpty() ?? Constants.empty,
+      email: this?.email.orEmpty() ?? Constants.empty,
+      type: this?.type.orEmpty() ?? Constants.empty,
+    );
+  }
+}
+
+extension LoginDataMapper on LoginDataResponse? {
+  LoginData toDomain() {
+    return LoginData(
+      user: this?.user != null ? this!.user.toDomain() : null,
+      token: this?.token != null ? this!.token : null,
     );
   }
 }

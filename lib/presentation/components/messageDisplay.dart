@@ -1,6 +1,6 @@
-import 'package:blood_donation/presentation/resource_data/color_manager.dart';
-import 'package:blood_donation/presentation/resource_data/style_manager.dart';
-import 'package:blood_donation/presentation/resource_data/values_managers.dart';
+import 'package:Dr_OnCall/presentation/resource_data/color_manager.dart';
+import 'package:Dr_OnCall/presentation/resource_data/style_manager.dart';
+import 'package:Dr_OnCall/presentation/resource_data/values_managers.dart';
 import 'package:flutter/cupertino.dart';
 
 class MessageDisplayWidget extends StatelessWidget {

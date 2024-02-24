@@ -1,11 +1,11 @@
-import 'package:blood_donation/data/requests/register_request.dart';
-import 'package:blood_donation/data/response/RegisterResponse.dart';
+import 'package:Dr_OnCall/data/requests/register_request.dart';
+import 'package:Dr_OnCall/data/response/login_response.dart';
+import 'package:Dr_OnCall/data/response/RegisterResponse.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/http.dart';
 
 import '../../app/constants.dart';
 import '../requests/login_request.dart';
-import '../response/ApiResponse.dart';
 
 part 'app_api.g.dart';
 
@@ -13,9 +13,9 @@ part 'app_api.g.dart';
 abstract class AppServiceClient {
   factory AppServiceClient(Dio dio, {String? baseUrl}) = _AppServiceClient;
 
-  @GET("users/signup")
+  @POST("users/signup")
   Future<RegisterResponse> register(@Body() RegisterRequest registerRequest);
 
-  @GET("users/login")
-  Future<ApiResponse> login(@Body() LoginRequest loginRequest);
+  @POST("users/login")
+  Future<LoginResponse> login(@Body() LoginRequest loginRequest);
 }

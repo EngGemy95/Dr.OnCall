@@ -1,6 +1,6 @@
-import 'package:blood_donation/presentation/pages/login/login_page.dart';
-import 'package:blood_donation/presentation/pages/register/register_page.dart';
-import 'package:blood_donation/presentation/pages/welcome/welcome_page.dart';
+import 'package:Dr_OnCall/presentation/pages/login/login_page.dart';
+import 'package:Dr_OnCall/presentation/pages/register/register_page.dart';
+import 'package:Dr_OnCall/presentation/pages/welcome/welcome_page.dart';
 import 'package:flutter/material.dart';
 import '../resource_data/strings_manager.dart';
 

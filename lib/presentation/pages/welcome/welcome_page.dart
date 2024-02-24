@@ -1,6 +1,6 @@
-import 'package:blood_donation/app/responsive.dart';
-import 'package:blood_donation/presentation/components/Welcome.dart';
-import 'package:blood_donation/presentation/resource_data/strings_manager.dart';
+import 'package:Dr_OnCall/app/responsive.dart';
+import 'package:Dr_OnCall/presentation/components/Welcome.dart';
+import 'package:Dr_OnCall/presentation/resource_data/strings_manager.dart';
 import 'package:flutter/material.dart';
 
 class WelcomePage extends StatelessWidget {

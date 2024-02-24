@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lottie/lottie.dart';
@@ -10,12 +8,19 @@ import '../presentation/resource_data/strings_manager.dart';
 import '../presentation/resource_data/style_manager.dart';
 import '../presentation/resource_data/values_managers.dart';
 
-void showScaffoldMessenger(BuildContext context, String message) {
+void showScaffoldMessenger(
+    {required BuildContext ctx,
+    required String message,
+    required Color bgColor}) {
   // Hide SnackBar if it already appear
-  ScaffoldMessenger.of(context).hideCurrentSnackBar();
+  ScaffoldMessenger.of(ctx).hideCurrentSnackBar();
   // Show message
-  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-    content: Text(message),
+  ScaffoldMessenger.of(ctx).showSnackBar(SnackBar(
+    content: Text(
+      message,
+      style: TextStyle(color: ColorManager.white),
+    ),
+    backgroundColor: bgColor,
   ));
 }
 
@@ -32,10 +37,10 @@ dismissDialog(BuildContext context) {
   }
 }
 
-showCustomDialogOfRequests(BuildContext cxt, Widget returnDialog) async {
+showCustomDialogOfRequests(BuildContext ctx, Widget returnDialog) async {
   await showDialog(
       barrierDismissible: false,
-      context: cxt,
+      context: ctx,
       builder: (BuildContext context) {
         return returnDialog;
       });

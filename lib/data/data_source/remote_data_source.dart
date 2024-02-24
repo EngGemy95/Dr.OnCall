@@ -1,13 +1,12 @@
-import 'package:blood_donation/data/requests/register_request.dart';
-import 'package:blood_donation/data/response/RegisterResponse.dart';
-
+import 'package:Dr_OnCall/data/requests/register_request.dart';
+import 'package:Dr_OnCall/data/response/RegisterResponse.dart';
 import '../network/app_api.dart';
 import '../requests/login_request.dart';
-import '../response/ApiResponse.dart';
+import '../response/login_response.dart';
 
 abstract class RemoteDataSource {
   Future<RegisterResponse> register(RegisterRequest registerRequest);
-  Future<ApiResponse> login(LoginRequest loginRequest);
+  Future<LoginResponse> login(LoginRequest loginRequest);
 }
 
 class RemoteDataSourceImpl extends RemoteDataSource {
@@ -21,7 +20,7 @@ class RemoteDataSourceImpl extends RemoteDataSource {
   }
 
   @override
-  Future<ApiResponse> login(LoginRequest loginRequest) async {
+  Future<LoginResponse> login(LoginRequest loginRequest) async {
     return await _appServiceClient.login(loginRequest);
   }
 }
