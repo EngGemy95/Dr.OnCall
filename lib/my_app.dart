@@ -1,7 +1,10 @@
 import 'package:Dr_OnCall/app/di.dart' as di;
 import 'package:Dr_OnCall/presentation/bloc/Login/login_bloc.dart';
 import 'package:Dr_OnCall/presentation/bloc/password/password_visibility_bloc.dart';
+import 'package:Dr_OnCall/presentation/bloc/register/register_bloc.dart';
+import 'package:Dr_OnCall/presentation/resource_data/color_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
 
@@ -25,11 +28,14 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(statusBarColor: ColorManager.primary));
     return Sizer(builder: (context, orientation, deviceType) {
       return MultiBlocProvider(
         providers: [
           BlocProvider(create: (_) => di.instance<SignInBloc>()),
           BlocProvider(create: (_) => di.instance<PasswordVisibilityBloc>()),
+          BlocProvider(create: (_) => di.instance<RegisterBloc>()),
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,

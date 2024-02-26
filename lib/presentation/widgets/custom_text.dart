@@ -7,25 +7,30 @@ Widget getTextField({
   required String labelText,
   bool isObscure = false,
   required IconData prefixIcon,
-  Widget? suffixIcon,
+  Widget? suffixIconChild,
   required VoidCallback onTapTextField,
   VoidCallback? onTapSuffxIcon,
+  required String? Function(String?) validator,
+  TextEditingController? controller,
 }) {
   return Padding(
     padding: EdgeInsets.all(paddingSize),
-    child: TextField(
+    child: TextFormField(
       onTap: onTapTextField,
+      controller: controller,
+      validator: validator,
+      onChanged: (value) {
+        controller?.text = value;
+      },
       style: const TextStyle(color: Colors.black),
       obscureText: isObscure ? true : false,
       decoration: InputDecoration(
         label: Text(labelText),
         prefixIcon: Icon(prefixIcon),
-        suffixIcon: isObscure
-            ? InkWell(
-                onTap: onTapSuffxIcon,
-                child: suffixIcon,
-              )
-            : null,
+        suffixIcon: InkWell(
+          onTap: onTapSuffxIcon,
+          child: suffixIconChild ?? const Text(""),
+        ),
       ),
     ),
   );
