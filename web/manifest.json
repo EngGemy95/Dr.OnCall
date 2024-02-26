@@ -1,6 +1,6 @@
 {
-    "name": "Dr_OnCall",
-    "short_name": "Dr_OnCall",
+    "name": "dr_oncall",
+    "short_name": "dr_oncall",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

@@ -1,8 +1,9 @@
-import 'package:Dr_OnCall/data/repository/repository_login_impl.dart';
-import 'package:Dr_OnCall/domain/repository/login_repository.dart';
-import 'package:Dr_OnCall/domain/usecase/login_usecase.dart';
-import 'package:Dr_OnCall/domain/usecase/register_usecase.dart';
-import 'package:Dr_OnCall/presentation/bloc/Login/login_bloc.dart';
+import 'package:Dr/data/repository/repository_login_impl.dart';
+import 'package:Dr/domain/repository/login_repository.dart';
+import 'package:Dr/domain/usecase/login_usecase.dart';
+import 'package:Dr/domain/usecase/register_usecase.dart';
+import 'package:Dr/presentation/bloc/Login/login_bloc.dart';
+import 'package:Dr/presentation/bloc/register/register_bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
@@ -58,6 +59,7 @@ Future<void> initAppModule() async {
 // Bloc instance
   instance.registerFactory(() => SignInBloc(loginUseCase: instance()));
   instance.registerFactory(() => PasswordVisibilityBloc());
+  instance.registerFactory(() => RegisterBloc(registerUseCase: instance()));
 
   // UseCases instance
 

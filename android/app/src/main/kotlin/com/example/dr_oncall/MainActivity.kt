@@ -1,4 +1,4 @@
-package com.example.Dr_OnCall
+package com.example.dr_oncall
 
 import io.flutter.embedding.android.FlutterActivity
 

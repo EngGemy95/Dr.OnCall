@@ -1,10 +1,10 @@
-import 'package:Dr_OnCall/data/requests/login_request.dart';
-import 'package:Dr_OnCall/data/requests/register_request.dart';
-import 'package:Dr_OnCall/domain/models/register_model.dart';
+import 'package:Dr/data/requests/login_request.dart';
+import 'package:Dr/data/requests/register_request.dart';
+import 'package:Dr/domain/models/register_model.dart';
 import 'package:dartz/dartz.dart';
-import 'package:Dr_OnCall/app/app_prefs.dart';
-import 'package:Dr_OnCall/data/mapper/mapper.dart';
-import 'package:Dr_OnCall/data/network/Failure.dart';
+import 'package:Dr/app/app_prefs.dart';
+import 'package:Dr/data/mapper/mapper.dart';
+import 'package:Dr/data/network/Failure.dart';
 import '../../domain/repository/register_repository.dart';
 import '../data_source/remote_data_source.dart';
 import '../network/error_handler.dart';

@@ -1,5 +1,5 @@
-import 'package:Dr_OnCall/data/requests/register_request.dart';
-import 'package:Dr_OnCall/domain/models/register_model.dart';
+import 'package:Dr/data/requests/register_request.dart';
+import 'package:Dr/domain/models/register_model.dart';
 import 'package:dartz/dartz.dart';
 
 import '../../data/network/Failure.dart';

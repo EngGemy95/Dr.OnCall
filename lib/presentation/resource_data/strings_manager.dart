@@ -13,6 +13,10 @@ class AppStrings {
   static const phoneNumber = "Phone Number";
   static const password = "Password";
   static const confirmPassword = "Confirm Password";
+  static const passwordCantBeEmpty = "Password can't be empty";
+  static const emailCantBeEmpty = "Email can't be empty";
+  static const nameCantBeEmpty = "Name can't be empty";
+  static const phoneCantBeEmpty = "Phone can't be empty";
 
   static const pleaseEnter = "please Enter";
   static const retryAgain = "Retry Again";

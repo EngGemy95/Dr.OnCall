@@ -1,4 +1,4 @@
-import 'package:Dr_OnCall/data/requests/login_request.dart';
+import 'package:Dr/data/requests/login_request.dart';
 import 'package:dartz/dartz.dart';
 
 import '../../data/network/Failure.dart';

@@ -1,6 +1,6 @@
-import 'package:Dr_OnCall/data/requests/register_request.dart';
-import 'package:Dr_OnCall/data/response/login_response.dart';
-import 'package:Dr_OnCall/data/response/RegisterResponse.dart';
+import 'package:Dr/data/requests/register_request.dart';
+import 'package:Dr/data/response/login_response.dart';
+import 'package:Dr/data/response/RegisterResponse.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/http.dart';
 

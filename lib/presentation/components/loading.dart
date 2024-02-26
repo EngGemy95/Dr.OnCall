@@ -1,6 +1,6 @@
-import 'package:Dr_OnCall/presentation/resource_data/color_manager.dart';
-import 'package:Dr_OnCall/presentation/resource_data/values_managers.dart';
-import 'package:Dr_OnCall/presentation/widgets/customes_spaces.dart';
+import 'package:Dr/presentation/resource_data/color_manager.dart';
+import 'package:Dr/presentation/resource_data/values_managers.dart';
+import 'package:Dr/presentation/widgets/customes_spaces.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

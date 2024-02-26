@@ -1,4 +1,4 @@
-import 'package:Dr_OnCall/my_app.dart';
+import 'package:Dr/my_app.dart';
 import 'package:flutter/material.dart';
 import 'app/di.dart' as di;
 

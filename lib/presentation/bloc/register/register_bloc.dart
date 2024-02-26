@@ -1,4 +1,4 @@
-import 'package:Dr_OnCall/domain/usecase/register_usecase.dart';
+import 'package:Dr/domain/usecase/register_usecase.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

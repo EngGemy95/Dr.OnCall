@@ -1,29 +1,39 @@
-import 'package:Dr_OnCall/app/di.dart' as di;
-import 'package:Dr_OnCall/app/functions.dart';
-import 'package:Dr_OnCall/data/requests/login_request.dart';
-import 'package:Dr_OnCall/presentation/bloc/Login/login_bloc.dart';
-import 'package:Dr_OnCall/presentation/bloc/password/password_visibility_bloc.dart';
-import 'package:Dr_OnCall/presentation/components/loading.dart';
-import 'package:Dr_OnCall/presentation/resource_data/assets_manager.dart';
-import 'package:Dr_OnCall/presentation/resource_data/color_manager.dart';
-import 'package:Dr_OnCall/presentation/resource_data/font_manager.dart';
-import 'package:Dr_OnCall/presentation/resource_data/style_manager.dart';
-import 'package:Dr_OnCall/presentation/resource_data/values_managers.dart';
+import 'package:Dr/app/di.dart' as di;
+import 'package:Dr/app/functions.dart';
+import 'package:Dr/data/requests/login_request.dart';
+import 'package:Dr/presentation/bloc/Login/login_bloc.dart';
+import 'package:Dr/presentation/bloc/password/password_visibility_bloc.dart';
+import 'package:Dr/presentation/components/loading.dart';
+import 'package:Dr/presentation/resource_data/assets_manager.dart';
+import 'package:Dr/presentation/resource_data/color_manager.dart';
+import 'package:Dr/presentation/resource_data/font_manager.dart';
+import 'package:Dr/presentation/resource_data/style_manager.dart';
+import 'package:Dr/presentation/resource_data/values_managers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../resource_data/route_manager.dart';
 import '../resource_data/strings_manager.dart';
+import '../widgets/custom_text.dart';
 import '../widgets/customes_spaces.dart';
 import '../widgets/custom_button.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class AppSignIn extends StatelessWidget {
+class AppSignIn extends StatefulWidget {
   AppSignIn({super.key});
 
-  final bool passToggle = true;
+  @override
+  State<AppSignIn> createState() => _AppSignInState();
+}
+
+class _AppSignInState extends State<AppSignIn> {
+  final PasswordVisibilityBloc passwordVisibilityBloc =
+      PasswordVisibilityBloc();
+
   final _formKey = GlobalKey<FormState>();
+
   final TextEditingController _emailTextEditControl = TextEditingController();
+
   final TextEditingController _passwordTextEditControl =
       TextEditingController();
 
@@ -41,12 +51,18 @@ class AppSignIn extends StatelessWidget {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    passwordVisibilityBloc.close();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: null,
         resizeToAvoidBottomInset: true,
-        body: Material(
-          color: Colors.white,
-          child: SingleChildScrollView(
+        body: Scaffold(
+          body: SingleChildScrollView(
             physics: const AlwaysScrollableScrollPhysics(),
             child: SafeArea(
                 child: Form(
@@ -65,64 +81,49 @@ class AppSignIn extends StatelessWidget {
                     ),
                   ),
                   getSizedBox(heightSize: AppSize.s10),
-                  Padding(
-                    padding: const EdgeInsets.all(AppSize.s12),
-                    child: TextFormField(
-                      // key: _emailFieldKey,
-                      controller: _emailTextEditControl,
-                      validator: (value) {
-                        return value!.isEmpty ? "Email can't be empty" : null;
-                      },
-                      onTap: () {},
-                      style: const TextStyle(color: Colors.black),
-                      decoration: const InputDecoration(
-                        label: Text(AppStrings.enterEmail),
-                        prefixIcon: Icon(Icons.person),
-                      ),
-                    ),
+                  getTextField(
+                    paddingSize: AppSize.s10,
+                    labelText: AppStrings.enterEmail,
+                    isObscure: false,
+                    prefixIcon: Icons.person,
+                    onTapTextField: () {},
+                    validator: (value) {
+                      return value!.isEmpty
+                          ? AppStrings.emailCantBeEmpty
+                          : null;
+                    },
+                    controller: _emailTextEditControl,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(AppSize.s12),
-                    child: BlocBuilder<PasswordVisibilityBloc,
-                        PasswordVisibilityState>(
+                  BlocBuilder<PasswordVisibilityBloc, PasswordVisibilityState>(
                       builder: (context, state) {
-                        return TextFormField(
-                          controller: _passwordTextEditControl,
-                          validator: (value) {
-                            return value!.isEmpty
-                                ? "Password can't be empty"
-                                : null;
-                          },
-                          onTap: () {},
-                          onChanged: (value) {
-                            _passwordTextEditControl.text = value;
-                          },
-                          style: const TextStyle(color: Colors.black),
-                          obscureText: state is PasswordHidden,
-                          decoration: InputDecoration(
-                            label: const Text(AppStrings.enterPassword),
-                            prefixIcon: const Icon(Icons.lock),
-                            suffixIcon: InkWell(
-                              onTap: () {
-                                context
-                                    .read<PasswordVisibilityBloc>()
-                                    .add(TogglePasswordVisibility());
-                              },
-                              child: state is PasswordHidden
-                                  ? const Icon(
-                                      CupertinoIcons.eye_slash_fill,
-                                      color: ColorManager.grey,
-                                    )
-                                  : Icon(
-                                      CupertinoIcons.eye_fill,
-                                      color: ColorManager.primary,
-                                    ),
-                            ),
-                          ),
-                        );
+                    return getTextField(
+                      paddingSize: AppSize.s10,
+                      labelText: AppStrings.enterPassword,
+                      isObscure: state is PasswordHidden,
+                      prefixIcon: Icons.phone,
+                      onTapTextField: () {},
+                      validator: (value) {
+                        return value!.isEmpty
+                            ? AppStrings.passwordCantBeEmpty
+                            : null;
                       },
-                    ),
-                  ),
+                      controller: _passwordTextEditControl,
+                      onTapSuffxIcon: () {
+                        context
+                            .read<PasswordVisibilityBloc>()
+                            .add(TogglePasswordVisibility());
+                      },
+                      suffixIconChild: state is PasswordHidden
+                          ? const Icon(
+                              CupertinoIcons.eye_slash_fill,
+                              color: ColorManager.grey,
+                            )
+                          : Icon(
+                              CupertinoIcons.eye_fill,
+                              color: ColorManager.primary,
+                            ),
+                    );
+                  }),
                   getSizedBox(heightSize: AppSize.s20),
                   BlocConsumer<SignInBloc, SignInState>(
                     listener: (ctx, state) {

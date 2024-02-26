@@ -25,13 +25,15 @@ ThemeData getApplicationTheme() {
 
     //app bar theme
     appBarTheme: AppBarTheme(
-        centerTitle: true,
-        systemOverlayStyle: SystemUiOverlayStyle.light, // 2
-        color: ColorManager.primary,
-        elevation: AppSize.s4,
-        shadowColor: ColorManager.background,
-        titleTextStyle:
-            getRegularStyle(color: ColorManager.white, fontSize: FontSize.s16)),
+      centerTitle: true,
+      systemOverlayStyle: SystemUiOverlayStyle.light, // 2
+      // backgroundColor: Colors.transparent,
+      color: ColorManager.primary,
+      elevation: AppSize.s4,
+      shadowColor: ColorManager.background,
+      titleTextStyle:
+          getRegularStyle(color: ColorManager.white, fontSize: FontSize.s16),
+    ),
 
     //Button Theme
     buttonTheme: ButtonThemeData(

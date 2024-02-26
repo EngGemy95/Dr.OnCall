@@ -1,5 +1,5 @@
-import 'package:Dr_OnCall/data/requests/register_request.dart';
-import 'package:Dr_OnCall/data/response/RegisterResponse.dart';
+import 'package:Dr/data/requests/register_request.dart';
+import 'package:Dr/data/response/RegisterResponse.dart';
 import '../network/app_api.dart';
 import '../requests/login_request.dart';
 import '../response/login_response.dart';

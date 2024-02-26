@@ -1,4 +1,4 @@
-import 'package:Dr_OnCall/presentation/components/AppSignIn.dart';
+import 'package:Dr/presentation/components/AppSignIn.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {

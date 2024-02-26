@@ -1,4 +1,4 @@
-import 'package:Dr_OnCall/presentation/components/AppSingUp.dart';
+import 'package:Dr/presentation/components/AppSingUp.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatelessWidget {

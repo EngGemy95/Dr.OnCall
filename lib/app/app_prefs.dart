@@ -1,10 +1,8 @@
 import 'dart:convert';
 
-import 'package:Dr_OnCall/data/response/response.dart';
-import 'package:Dr_OnCall/domain/models/models.dart';
-import 'package:Dr_OnCall/presentation/resource_data/strings_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:Dr_OnCall/data/mapper/mapper.dart';
+import '../data/response/response.dart';
+import '../presentation/resource_data/strings_manager.dart';
 
 class AppPreference {
   final SharedPreferences _sharedPreferences;

@@ -13,7 +13,7 @@ class _AppServiceClient implements AppServiceClient {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'http://192.168.11.77:1000/api/';
+    baseUrl ??= 'https://dr-on-call.vercel.app/api/';
   }
 
   final Dio _dio;
