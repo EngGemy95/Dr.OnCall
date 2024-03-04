@@ -23,7 +23,7 @@ class DioFactory {
       sendTimeout: const Duration(milliseconds: Constants.apiTimeOut),
       validateStatus: (status) {
         // Allow status codes 200 and 400
-        return status == 200 || status == 400;
+        return status == 200 || status == 400 || status == 301;
       },
     );
 

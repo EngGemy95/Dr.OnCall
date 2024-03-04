@@ -19,9 +19,9 @@ Widget getTextField({
       onTap: onTapTextField,
       controller: controller,
       validator: validator,
-      onChanged: (value) {
-        controller?.text = value;
-      },
+      // onChanged: (value) {
+      //   controller?.text = value;
+      // },
       style: const TextStyle(color: Colors.black),
       obscureText: isObscure ? true : false,
       decoration: InputDecoration(

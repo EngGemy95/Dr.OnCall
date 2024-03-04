@@ -3,7 +3,6 @@ import 'package:Dr/app/functions.dart';
 import 'package:Dr/data/requests/login_request.dart';
 import 'package:Dr/presentation/bloc/Login/login_bloc.dart';
 import 'package:Dr/presentation/bloc/password/password_visibility_bloc.dart';
-import 'package:Dr/presentation/components/loading.dart';
 import 'package:Dr/presentation/resource_data/assets_manager.dart';
 import 'package:Dr/presentation/resource_data/color_manager.dart';
 import 'package:Dr/presentation/resource_data/font_manager.dart';
@@ -125,7 +124,13 @@ class _AppSignInState extends State<AppSignIn> {
                     );
                   }),
                   getSizedBox(heightSize: AppSize.s20),
-                  BlocConsumer<SignInBloc, SignInState>(
+                  BlocListener<SignInBloc, SignInState>(
+                    child: getButton(
+                      buttonText: AppStrings.login,
+                      onTap: () {
+                        validateFormThenLogin(context);
+                      },
+                    ),
                     listener: (ctx, state) {
                       if (state is LoginLoadingState) {
                         showCustomDialogOfRequests(
@@ -153,14 +158,6 @@ class _AppSignInState extends State<AppSignIn> {
                           (route) => false,
                         );
                       }
-                    },
-                    builder: (context, state) {
-                      return getButton(
-                        buttonText: AppStrings.login,
-                        onTap: () {
-                          validateFormThenLogin(context);
-                        },
-                      );
                     },
                   ),
                   getSizedBox(heightSize: AppSize.s20),

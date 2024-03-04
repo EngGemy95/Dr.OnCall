@@ -27,7 +27,7 @@ class WelcomeMobileScreen extends StatelessWidget {
                   alignment: Alignment.centerRight,
                   child: TextButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, Routes.login);
+                      Navigator.pushNamed(context, Routes.home);
                     },
                     child: Text(
                       AppStrings.skip,

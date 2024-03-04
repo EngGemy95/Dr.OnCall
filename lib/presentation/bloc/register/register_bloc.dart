@@ -13,7 +13,6 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   RegisterBloc({required this.registerUseCase}) : super(RegisterInitial()) {
     on<RegisterEvent>((event, emit) async {
       if (event is SignUpEvent) {
-        if (state is RegisterLoadingState) {
           emit(RegisterLoadingState());
           final response = await registerUseCase(event.registerRequest);
           response.fold((failure) {
@@ -21,7 +20,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
           }, (registerModel) {
             emit(RegisterSuccessState());
           });
-        }
+       
       }
     });
   }

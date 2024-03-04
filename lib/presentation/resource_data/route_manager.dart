@@ -1,3 +1,4 @@
+import 'package:Dr/presentation/pages/home/home.dart';
 import 'package:Dr/presentation/pages/login/login_page.dart';
 import 'package:Dr/presentation/pages/register/register_page.dart';
 import 'package:Dr/presentation/pages/welcome/welcome_page.dart';
@@ -8,6 +9,7 @@ class Routes {
   static const String welcome = "/";
   static const String login = "/login";
   static const String register = "/register";
+  static const String home = "/home";
 }
 
 class RouteGenerator {
@@ -30,6 +32,11 @@ class RouteGenerator {
             maintainState: false,
             settings: settings,
             builder: (_) => const RegisterPage());
+      case Routes.home:
+        return MaterialPageRoute(
+            maintainState: false,
+            settings: settings,
+            builder: (_) => const HomePage());
 
       default:
         return undefinedRoute();

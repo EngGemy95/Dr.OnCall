@@ -43,7 +43,7 @@ class _MyAppState extends State<MyApp> {
         providers: [
           BlocProvider(create: (_) => di.instance<SignInBloc>()),
           BlocProvider(create: (_) => di.instance<PasswordVisibilityBloc>()),
-          BlocProvider(create: (_) => di.instance<RegisterBloc>()),
+          //BlocProvider(create: (_) => di.instance<RegisterBloc>()),
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
