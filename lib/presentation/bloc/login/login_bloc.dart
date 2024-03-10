@@ -1,3 +1,4 @@
+import 'package:Dr/app/app_prefs.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -9,17 +10,20 @@ part 'login_state.dart';
 
 class SignInBloc extends Bloc<LoginEvent, SignInState> {
   final LoginUseCase loginUseCase;
+  final AppPreference appPreference;
 
-  SignInBloc({required this.loginUseCase}) : super(LoginInitial()) {
+  SignInBloc({required this.loginUseCase, required this.appPreference})
+      : super(LoginInitial()) {
     on<LoginEvent>((event, emit) async {
       if (event is SignInEvent) {
         emit(LoginLoadingState());
         final response = await loginUseCase(event.loginRequest);
-        response.fold((failure) {
+        await response.fold((failure) {
           print("errrrrrrrrrrorrrrrrrrrrrrr");
           emit(ErrorLoginState(message: failure.message));
-        }, (apiModel) {
+        }, (apiModel) async {
           print("Suuuuuuuuuuuuccccccrsssssssssssss");
+          await appPreference.setUserData(userData: apiModel.data!);
           emit(LoginSuccessState());
         });
       }

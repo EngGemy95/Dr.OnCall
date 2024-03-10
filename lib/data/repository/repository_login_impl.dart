@@ -1,5 +1,5 @@
 import 'package:Dr/data/requests/login_request.dart';
-import 'package:Dr/domain/models/login_model.dart';
+import 'package:Dr/domain/models/login/login_model.dart';
 import 'package:Dr/domain/repository/login_repository.dart';
 import 'package:dartz/dartz.dart';
 import 'package:Dr/app/app_prefs.dart';
@@ -8,15 +8,13 @@ import 'package:Dr/data/network/Failure.dart';
 import '../data_source/remote_data_source.dart';
 import '../network/error_handler.dart';
 import '../network/network_info.dart';
-import '../response/login_response.dart';
-
+ 
 class LoginRepositoryImpl implements LoginRepository {
   final RemoteDataSource _remoteDataSource;
-  final NetworkInfo _networkInfo;
-  final AppPreference _appPreference;
+  final NetworkInfo _networkInfo; 
 
   LoginRepositoryImpl(
-      this._remoteDataSource, this._networkInfo, this._appPreference);
+      this._remoteDataSource, this._networkInfo );
 
   @override
   Future<Either<Failure, LoginModel>> login(LoginRequest loginRequest) async {

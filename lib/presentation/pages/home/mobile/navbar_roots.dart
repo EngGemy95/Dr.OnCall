@@ -1,12 +1,19 @@
-import 'package:Dr/presentation/pages/home/home.dart';
+import 'package:Dr/presentation/pages/home/mobile/home.dart';
+import 'package:Dr/presentation/pages/settings/mobile/settings_screen.dart';
 import 'package:Dr/presentation/resource_data/color_manager.dart';
 import 'package:Dr/presentation/resource_data/values_managers.dart';
 import 'package:flutter/material.dart';
 
-class NavBarRoots extends StatelessWidget {
+class NavBarRoots extends StatefulWidget {
   NavBarRoots({super.key});
 
+  @override
+  State<NavBarRoots> createState() => _NavBarRootsState();
+}
+
+class _NavBarRootsState extends State<NavBarRoots> {
   int currentIndex = 0;
+
   final screens = [
     HomePage(),
 
@@ -14,7 +21,7 @@ class NavBarRoots extends StatelessWidget {
     Container(),
 
     //Settings Page
-    Container()
+    SettingsScreen()
   ];
 
   @override
@@ -34,6 +41,7 @@ class NavBarRoots extends StatelessWidget {
         currentIndex: currentIndex,
         onTap: (index) {
           currentIndex = index;
+          setState(() {});
         },
         items: [
           BottomNavigationBarItem(

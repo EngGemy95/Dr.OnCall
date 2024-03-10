@@ -1,7 +1,5 @@
-import 'package:Dr/app/di.dart' as di;
 import 'package:Dr/app/functions.dart';
 import 'package:Dr/data/requests/login_request.dart';
-import 'package:Dr/presentation/bloc/Login/login_bloc.dart';
 import 'package:Dr/presentation/bloc/password/password_visibility_bloc.dart';
 import 'package:Dr/presentation/resource_data/assets_manager.dart';
 import 'package:Dr/presentation/resource_data/color_manager.dart';
@@ -10,11 +8,14 @@ import 'package:Dr/presentation/resource_data/style_manager.dart';
 import 'package:Dr/presentation/resource_data/values_managers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../resource_data/route_manager.dart';
-import '../resource_data/strings_manager.dart';
-import '../widgets/custom_text.dart';
-import '../widgets/customes_spaces.dart';
-import '../widgets/custom_button.dart';
+import '../../../../app/app_prefs.dart';
+import '../../../../app/di.dart' as di;
+import '../../../bloc/Login/login_bloc.dart';
+import '../../../resource_data/route_manager.dart';
+import '../../../resource_data/strings_manager.dart';
+import '../../../widgets/custom_text.dart';
+import '../../../widgets/custom_sized_box.dart';
+import '../../../widgets/custom_button.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -29,23 +30,23 @@ class _AppSignInState extends State<AppSignIn> {
   final PasswordVisibilityBloc passwordVisibilityBloc =
       PasswordVisibilityBloc();
 
-  final _formKey = GlobalKey<FormState>();
-
   final TextEditingController _emailTextEditControl = TextEditingController();
 
   final TextEditingController _passwordTextEditControl =
       TextEditingController();
 
+  final _formKey = GlobalKey<FormState>();
+  final AppPreference appPreference = di.instance<AppPreference>();
+
   void validateFormThenLogin(BuildContext context) {
     final isValid = _formKey.currentState!.validate();
     final loginRequest = LoginRequest(
-        email: _emailTextEditControl.text,
-        password: _passwordTextEditControl.text);
+      email: _emailTextEditControl.text,
+      password: _passwordTextEditControl.text,
+    );
 
     if (isValid) {
       context.read<SignInBloc>().add(SignInEvent(loginRequest: loginRequest));
-      // BlocProvider.of<SignInBloc>(context)
-      //     .add(SignInEvent(loginRequest: loginRequest));
     }
   }
 
@@ -68,7 +69,7 @@ class _AppSignInState extends State<AppSignIn> {
               key: _formKey,
               child: Column(
                 children: [
-                  getSizedBox(
+                  customSizedBox(
                     heightSize: AppSize.s10,
                   ),
                   Padding(
@@ -79,7 +80,7 @@ class _AppSignInState extends State<AppSignIn> {
                       height: MediaQuery.of(context).size.height * 0.3,
                     ),
                   ),
-                  getSizedBox(heightSize: AppSize.s10),
+                  customSizedBox(heightSize: AppSize.s10),
                   getTextField(
                     paddingSize: AppSize.s10,
                     labelText: AppStrings.enterEmail,
@@ -123,7 +124,7 @@ class _AppSignInState extends State<AppSignIn> {
                             ),
                     );
                   }),
-                  getSizedBox(heightSize: AppSize.s20),
+                  customSizedBox(heightSize: AppSize.s20),
                   BlocListener<SignInBloc, SignInState>(
                     child: getButton(
                       buttonText: AppStrings.login,
@@ -131,7 +132,7 @@ class _AppSignInState extends State<AppSignIn> {
                         validateFormThenLogin(context);
                       },
                     ),
-                    listener: (ctx, state) {
+                    listener: (ctx, state) async {
                       if (state is LoginLoadingState) {
                         showCustomDialogOfRequests(
                             ctx,
@@ -152,6 +153,8 @@ class _AppSignInState extends State<AppSignIn> {
                           bgColor: ColorManager.primary,
                         );
 
+                        print((await appPreference.getUserData())?.user!.email);
+
                         Navigator.of(ctx).pushAndRemoveUntil(
                           RouteGenerator.getRoute(
                               const RouteSettings(name: Routes.welcome)),
@@ -160,7 +163,7 @@ class _AppSignInState extends State<AppSignIn> {
                       }
                     },
                   ),
-                  getSizedBox(heightSize: AppSize.s20),
+                  customSizedBox(heightSize: AppSize.s20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

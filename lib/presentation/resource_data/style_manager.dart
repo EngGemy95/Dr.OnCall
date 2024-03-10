@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'font_manager.dart';
 
-TextStyle _getTextStyle(double fontSize, FontWeight fontWeight, Color color) {
+TextStyle getTextStyle(
+    {double? fontSize, FontWeight? fontWeight, Color? color}) {
   return TextStyle(
     fontSize: fontSize,
     fontWeight: fontWeight,
@@ -12,15 +13,21 @@ TextStyle _getTextStyle(double fontSize, FontWeight fontWeight, Color color) {
 }
 
 // light style
-TextStyle getLightStyle(
-    {double fontSize = FontSize.s12, required Color color}) {
-  return _getTextStyle(fontSize, FontWeightManager.light, color);
+TextStyle getLightStyle({
+  double fontSize = FontSize.s12,
+  required Color color,
+}) {
+  return getTextStyle(
+      fontSize: fontSize, fontWeight: FontWeightManager.light, color: color);
 }
 
 //Regular Style
-TextStyle getRegularStyle(
-    {double fontSize = FontSize.s12, required Color color}) {
-  return _getTextStyle(fontSize, FontWeightManager.regular, color);
+TextStyle getRegularStyle({
+  double fontSize = FontSize.s12,
+  required Color color,
+}) {
+  return getTextStyle(
+      fontSize: fontSize, fontWeight: FontWeightManager.regular, color: color);
 }
 
 //Medium Style
@@ -28,7 +35,8 @@ TextStyle getMediumStyle({
   double fontSize = FontSize.s14,
   required Color color,
 }) {
-  return _getTextStyle(fontSize, FontWeightManager.medium, color);
+  return getTextStyle(
+      fontSize: fontSize, fontWeight: FontWeightManager.medium, color: color);
 }
 
 //semiBold Style
@@ -36,7 +44,8 @@ TextStyle getSemiBoldStyle({
   double fontSize = FontSize.s14,
   required Color color,
 }) {
-  return _getTextStyle(fontSize, FontWeightManager.semiBold, color);
+  return getTextStyle(
+      fontSize: fontSize, fontWeight: FontWeightManager.semiBold, color: color);
 }
 
 //semiBold Style
@@ -44,7 +53,7 @@ TextStyle getCustomFontWeightStyle(
     {double fontSize = FontSize.s14,
     required Color color,
     required FontWeight fontWeight}) {
-  return _getTextStyle(fontSize, fontWeight, color);
+  return getTextStyle(fontSize: fontSize, fontWeight: fontWeight, color: color);
 }
 
 //Bold Style
@@ -52,5 +61,6 @@ TextStyle getBoldStyle({
   double fontSize = FontSize.s18,
   required Color color,
 }) {
-  return _getTextStyle(fontSize, FontWeightManager.bold, color);
+  return getTextStyle(
+      fontSize: fontSize, fontWeight: FontWeightManager.bold, color: color);
 }

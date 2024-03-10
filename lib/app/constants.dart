@@ -8,5 +8,8 @@ class Constants {
   static const bool defaultBool = false;
   static const int zero = 0;
   static const double doubleZero = 0.0;
-  static const int apiTimeOut = 15000; // 1 min
+  static const int apiTimeOut = 15000;
+
+  //Shared Preference Keys
+  static const loginData = "Login Data";
 }

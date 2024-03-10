@@ -1,6 +1,6 @@
 import 'package:Dr/data/response/login_response.dart';
 import 'package:Dr/data/response/RegisterResponse.dart';
-import 'package:Dr/domain/models/login_model.dart';
+import 'package:Dr/domain/models/login/login_model.dart';
 import 'package:Dr/domain/models/register_model.dart';
 import '../../app/constants.dart';
 import '../../app/extensions.dart';

@@ -1,7 +1,6 @@
 import 'package:Dr/app/di.dart' as di;
 import 'package:Dr/presentation/bloc/Login/login_bloc.dart';
 import 'package:Dr/presentation/bloc/password/password_visibility_bloc.dart';
-import 'package:Dr/presentation/bloc/register/register_bloc.dart';
 import 'package:Dr/presentation/resource_data/color_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -39,17 +38,10 @@ class _MyAppState extends State<MyApp> {
     //   ],
     // );
     return Sizer(builder: (context, orientation, deviceType) {
-      return MultiBlocProvider(
-        providers: [
-          BlocProvider(create: (_) => di.instance<SignInBloc>()),
-          BlocProvider(create: (_) => di.instance<PasswordVisibilityBloc>()),
-          //BlocProvider(create: (_) => di.instance<RegisterBloc>()),
-        ],
-        child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          onGenerateRoute: (settings) => RouteGenerator.getRoute(settings),
-          theme: getApplicationTheme(),
-        ),
+      return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        onGenerateRoute: (settings) => RouteGenerator.getRoute(settings),
+        theme: getApplicationTheme(),
       );
     });
   }

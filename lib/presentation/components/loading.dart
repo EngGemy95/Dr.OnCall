@@ -1,6 +1,6 @@
 import 'package:Dr/presentation/resource_data/color_manager.dart';
 import 'package:Dr/presentation/resource_data/values_managers.dart';
-import 'package:Dr/presentation/widgets/customes_spaces.dart';
+import 'package:Dr/presentation/widgets/custom_sized_box.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -12,10 +12,10 @@ class LoadingWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: AppPadding.p20),
       child: Center(
-        child: getSizedBox(
+        child: customSizedBox(
             heightSize: AppSize.s30,
             widthSize: AppSize.s30,
-            widget: CircularProgressIndicator(
+            childWidget: CircularProgressIndicator(
               color: ColorManager.primary,
             )),
       ),

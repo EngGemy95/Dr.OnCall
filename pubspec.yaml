@@ -37,9 +37,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_svg: ^2.0.9
   retrofit: ^4.1.0
-  analyzer: ^6.2.0
+  analyzer: ^6.4.1
   dio: ^5.4.0
-  json_annotation: ^4.4.0
+  json_annotation: ^4.8.1
   json_serializable: ^6.1.4
   dartz: ^0.10.1 #For Either<Failure,Success>
   internet_connection_checker: ^1.0.0+1
@@ -54,6 +54,8 @@ dependencies:
   equatable: ^2.0.5
   flutter_bloc: ^8.1.4
   easy_localization: ^3.0.4
+  auto_size_text: ^3.0.0
+  flutter_layout_grid: ^2.0.5
 
 dev_dependencies:
   flutter_test:

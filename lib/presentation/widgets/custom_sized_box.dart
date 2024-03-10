@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 import '../resource_data/values_managers.dart';
 
-Widget getSizedBox(
+Widget customSizedBox(
     {double heightSize = AppSize.s20,
     double widthSize = AppSize.s20,
-    Widget? widget}) {
+    Widget? childWidget}) {
   return SizedBox(
     height: heightSize,
     width: widthSize,
-    child: widget,
+    child: childWidget,
   );
 }

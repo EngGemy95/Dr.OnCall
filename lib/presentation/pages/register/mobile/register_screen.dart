@@ -7,14 +7,14 @@ import 'package:Dr/presentation/widgets/custom_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../app/functions.dart';
-import '../resource_data/assets_manager.dart';
-import '../resource_data/color_manager.dart';
-import '../resource_data/route_manager.dart';
-import '../resource_data/strings_manager.dart';
-import '../resource_data/values_managers.dart';
-import '../widgets/custom_text.dart';
-import '../widgets/customes_spaces.dart';
+import '../../../../app/functions.dart';
+import '../../../resource_data/assets_manager.dart';
+import '../../../resource_data/color_manager.dart';
+import '../../../resource_data/route_manager.dart';
+import '../../../resource_data/strings_manager.dart';
+import '../../../resource_data/values_managers.dart';
+import '../../../widgets/custom_text.dart';
+import '../../../widgets/custom_sized_box.dart';
 
 class AppSingUp extends StatefulWidget {
   @override
@@ -147,7 +147,7 @@ class _AppSingUpState extends State<AppSingUp> {
                         ),
                 );
               }),
-              getSizedBox(heightSize: AppSize.s10),
+              customSizedBox(heightSize: AppSize.s10),
               BlocListener<RegisterBloc, RegisterState>(
                   child: getButton(
                     buttonText: AppStrings.createAccount,
@@ -158,9 +158,10 @@ class _AppSingUpState extends State<AppSingUp> {
                   listener: (ctx, state) {
                     if (state is RegisterLoadingState) {
                       showCustomDialogOfRequests(
-                          ctx,
-                          getPopupDialog(
-                              ctx, popUpLoadingChildren(), ColorManager.white));
+                        ctx,
+                        getPopupDialog(
+                            ctx, popUpLoadingChildren(), ColorManager.white),
+                      );
                     } else if (state is RegisterErrorState) {
                       dismissDialog(ctx);
                       showScaffoldMessenger(

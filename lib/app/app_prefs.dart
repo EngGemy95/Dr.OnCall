@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:Dr/app/constants.dart';
+import 'package:Dr/domain/models/login/login_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../data/response/response.dart';
 import '../presentation/resource_data/strings_manager.dart';
@@ -8,6 +10,20 @@ class AppPreference {
   final SharedPreferences _sharedPreferences;
 
   AppPreference(this._sharedPreferences);
+
+  Future<void> setUserData({required LoginData userData}) async {
+    await _sharedPreferences.setString(
+        Constants.loginData, jsonEncode(userData));
+  }
+
+  Future<LoginData?> getUserData() async {
+    String? userData = await _sharedPreferences.getString(Constants.loginData);
+
+    if (userData != null) {
+      return LoginData.fromJson(jsonDecode(userData));
+    }
+    return null;
+  }
 
   Future<void> setCachedMovies(
       String type, List<ItemsResponse> itemsResponse) async {

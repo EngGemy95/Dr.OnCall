@@ -1,5 +1,5 @@
 import 'package:Dr/app/responsive.dart';
-import 'package:Dr/presentation/components/Welcome.dart';
+import 'package:Dr/presentation/pages/welcome/mobile/Welcome.dart';
 import 'package:flutter/material.dart';
 
 class WelcomePage extends StatelessWidget {

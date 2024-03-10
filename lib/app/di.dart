@@ -2,7 +2,6 @@ import 'package:Dr/data/repository/repository_login_impl.dart';
 import 'package:Dr/domain/repository/login_repository.dart';
 import 'package:Dr/domain/usecase/login_usecase.dart';
 import 'package:Dr/domain/usecase/register_usecase.dart';
-import 'package:Dr/presentation/bloc/Login/login_bloc.dart';
 import 'package:Dr/presentation/bloc/register/register_bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
@@ -15,6 +14,7 @@ import '../data/network/dio_factory.dart';
 import '../data/network/network_info.dart';
 import '../data/repository/repository_register_impl.dart';
 import '../domain/repository/register_repository.dart';
+import '../presentation/bloc/Login/login_bloc.dart';
 import '../presentation/bloc/password/password_visibility_bloc.dart';
 import './app_prefs.dart';
 
@@ -54,10 +54,11 @@ Future<void> initAppModule() async {
       () => RegisterRepositoryImpl(instance(), instance(), instance()));
 
   instance.registerLazySingleton<LoginRepository>(
-      () => LoginRepositoryImpl(instance(), instance(), instance()));
+      () => LoginRepositoryImpl(instance(), instance() ));
 
 // Bloc instance
-  instance.registerFactory(() => SignInBloc(loginUseCase: instance()));
+  instance.registerFactory(
+      () => SignInBloc(loginUseCase: instance(), appPreference: instance()));
   instance.registerFactory(() => PasswordVisibilityBloc());
   instance.registerFactory(() => RegisterBloc(registerUseCase: instance()));
 

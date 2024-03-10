@@ -1,15 +1,17 @@
-import 'package:Dr/presentation/pages/home/home.dart';
-import 'package:Dr/presentation/pages/login/login_page.dart';
-import 'package:Dr/presentation/pages/register/register_page.dart';
-import 'package:Dr/presentation/pages/welcome/welcome_page.dart';
+import 'package:Dr/presentation/pages/appointment/mobile/appointment_mobile.dart';
+import 'package:Dr/presentation/pages/login/mobile/login_page.dart';
+import 'package:Dr/presentation/pages/register/mobile/register_page.dart';
+import 'package:Dr/presentation/pages/welcome/mobile/welcome_page.dart';
 import 'package:flutter/material.dart';
+import '../pages/home/mobile/navbar_roots.dart';
 import '../resource_data/strings_manager.dart';
 
 class Routes {
   static const String welcome = "/";
   static const String login = "/login";
   static const String register = "/register";
-  static const String home = "/home";
+  static const String navBarRoots = "/navBarRoots";
+  static const String appointment = "/appointment";
 }
 
 class RouteGenerator {
@@ -32,11 +34,16 @@ class RouteGenerator {
             maintainState: false,
             settings: settings,
             builder: (_) => const RegisterPage());
-      case Routes.home:
+      case Routes.navBarRoots:
         return MaterialPageRoute(
             maintainState: false,
             settings: settings,
-            builder: (_) => const HomePage());
+            builder: (_) => NavBarRoots());
+      case Routes.appointment:
+        return MaterialPageRoute(
+            maintainState: false,
+            settings: settings,
+            builder: (_) => AppointmentMobilePage());
 
       default:
         return undefinedRoute();
