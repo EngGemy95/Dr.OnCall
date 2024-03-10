@@ -51,10 +51,10 @@ Future<void> initAppModule() async {
 
   // Repositoy instance
   instance.registerLazySingleton<RegisterRepository>(
-      () => RegisterRepositoryImpl(instance(), instance(), instance()));
+      () => RegisterRepositoryImpl(instance(), instance()));
 
   instance.registerLazySingleton<LoginRepository>(
-      () => LoginRepositoryImpl(instance(), instance() ));
+      () => LoginRepositoryImpl(instance(), instance()));
 
 // Bloc instance
   instance.registerFactory(

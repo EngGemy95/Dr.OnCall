@@ -17,14 +17,18 @@ class SignInBloc extends Bloc<LoginEvent, SignInState> {
     on<LoginEvent>((event, emit) async {
       if (event is SignInEvent) {
         emit(LoginLoadingState());
-        final response = await loginUseCase(event.loginRequest);
+        final response = await loginUseCase.call(event.loginRequest);
         await response.fold((failure) {
           print("errrrrrrrrrrorrrrrrrrrrrrr");
           emit(ErrorLoginState(message: failure.message));
         }, (apiModel) async {
           print("Suuuuuuuuuuuuccccccrsssssssssssss");
-          await appPreference.setUserData(userData: apiModel.data!);
-          emit(LoginSuccessState());
+          if (apiModel.status == 200) {
+            await appPreference.setUserData(userData: apiModel.data!);
+            emit(LoginSuccessState());
+          } else {
+            emit(ErrorLoginState(message: apiModel.message));
+          }
         });
       }
     });

@@ -1,4 +1,4 @@
-import 'package:Dr/presentation/pages/settings/mobile/settings_screen.dart';
+import 'package:Dr/presentation/pages/settings/mobile/settings_mobile.dart';
 import 'package:flutter/material.dart';
 
 class SettingsPage extends StatelessWidget {

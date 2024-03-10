@@ -6,18 +6,17 @@ import '../network/error_handler.dart';
 
 Future<Either<Failure, T>> executeAndHanldleError<T>(
   NetworkInfo _networkInfo,
-  Future<T> Function() function,
+  T,
 ) async {
   if (await _networkInfo.isConnected) {
     try {
-      final response = await function();
-     
-        return Right(response);
-    
+      final response = T;
+      return Right(response);
     } catch (error) {
+      print(error);
       return Left(ErrorHandler.handle(error).failure);
     }
   } else {
-    return Left(DataSource.NO_INTERNET_CONNECTION.getFailure());
+    return Left(DataSource.noInternetConnection.getFailure());
   }
 }

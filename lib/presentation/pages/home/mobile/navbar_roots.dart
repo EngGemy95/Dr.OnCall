@@ -1,5 +1,5 @@
 import 'package:Dr/presentation/pages/home/mobile/home.dart';
-import 'package:Dr/presentation/pages/settings/mobile/settings_screen.dart';
+import 'package:Dr/presentation/pages/settings/mobile/settings_mobile.dart';
 import 'package:Dr/presentation/resource_data/color_manager.dart';
 import 'package:Dr/presentation/resource_data/values_managers.dart';
 import 'package:flutter/material.dart';
