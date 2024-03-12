@@ -1,8 +1,6 @@
-import 'package:Dr/app/di.dart';
 import 'package:Dr/data/requests/register_request.dart';
 import 'package:Dr/presentation/bloc/password/password_visibility_bloc.dart';
 import 'package:Dr/presentation/bloc/register/register_bloc.dart';
-import 'package:Dr/presentation/components/loading.dart';
 import 'package:Dr/presentation/widgets/custom_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +15,8 @@ import '../../../widgets/custom_text.dart';
 import '../../../widgets/custom_sized_box.dart';
 
 class AppSingUp extends StatefulWidget {
+  const AppSingUp({super.key});
+
   @override
   State<AppSingUp> createState() => _AppSingUpState();
 }
@@ -34,8 +34,6 @@ class _AppSingUpState extends State<AppSingUp> {
   final TextEditingController _passwordTextEditControl =
       TextEditingController();
 
-  late PasswordVisibilityBloc _passwordVisibilityBloc;
-
   void validateFormThenRegister(BuildContext context) {
     final isValid = _formKey.currentState!.validate();
     if (isValid) {
@@ -50,19 +48,6 @@ class _AppSingUpState extends State<AppSingUp> {
           .add(SignUpEvent(registerRequest: registerRequest));
     }
   }
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   _passwordVisibilityBloc = PasswordVisibilityBloc(); // Initialize your BLoC
-  // }
-
-  // @override
-  // void dispose() {
-  //   _passwordVisibilityBloc
-  //       .close(); // Dispose of your BLoC when navigating away
-  //   super.dispose();
-  // }
 
   @override
   Widget build(BuildContext context) {

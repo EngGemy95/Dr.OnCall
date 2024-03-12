@@ -11,7 +11,7 @@ class ErrorHandler implements Exception {
     if (error is DioException) {
       failure = _handleError(error);
     } else if (error is SocketException) {
-      DataSource.noInternetConnection.getFailure();
+      failure = DataSource.noInternetConnection.getFailure();
     } else {
       failure = DataSource.DEFAULT.getFailure();
     }
@@ -21,11 +21,12 @@ class ErrorHandler implements Exception {
 Failure _handleError(DioException error) {
   switch (error.type) {
     case DioExceptionType.connectionTimeout:
-      return Failure("", "", ResponseMessage.connectionTimeout);
+      return Failure(
+          "", '${StatusCode.zero}', ResponseMessage.connectionTimeout);
     case DioExceptionType.sendTimeout:
-      return Failure("", "", ResponseMessage.sendTimeout);
+      return Failure("", '${StatusCode.zero}', ResponseMessage.sendTimeout);
     case DioExceptionType.receiveTimeout:
-      return Failure("", "", ResponseMessage.receiveTimeout);
+      return Failure("", '${StatusCode.zero}', ResponseMessage.receiveTimeout);
     case DioExceptionType.badResponse:
       final statusCode = error.response?.statusCode;
       if (statusCode != null) {
@@ -95,12 +96,12 @@ extension DataSourceExtension on DataSource {
             ResponseMessage.internalServerError);
 
       case DataSource.rateLimited:
-        return Failure("", "rate_limited", ResponseMessage.rate_limited);
+        return Failure("", '${StatusCode.zero}', ResponseMessage.rateLimited);
       case DataSource.noInternetConnection:
-        return Failure("", ResponseCode.noInternetConnection,
-            ResponseMessage.noInternetConncention);
+        return Failure(
+            "", '${StatusCode.zero}', ResponseMessage.noInternetConncention);
       case DataSource.DEFAULT:
-        return Failure("", ResponseCode.DEFAULT, ResponseMessage.DEFAULT);
+        return Failure("", '${StatusCode.zero}', ResponseMessage.DEFAULT);
       case DataSource.cancel:
         return Failure("", 'cancel', ResponseMessage.requestCanceled);
       case DataSource.badResponse:
@@ -116,12 +117,7 @@ class StatusCode {
   static const int notFound = 404;
   static const int conflict = 409;
   static const int internalServerError = 500;
-}
-
-class ResponseCode {
-  static const String RATE_LIMITED = "rateLimited"; // success with data
-  static const String noInternetConnection = "No Internet Connection";
-  static const String DEFAULT = "-";
+  static const int zero = 0;
 }
 
 class ResponseMessage {
@@ -133,7 +129,7 @@ class ResponseMessage {
   static const String conflict = "conflict";
   static const String internalServerError = "internalServerError";
   static const String requestCanceled = "Request Canceled";
-  static const String rate_limited = "RATE LIMITED";
+  static const String rateLimited = "RATE LIMITED";
   static const String connectionTimeout = "Connection Timeout";
   static const String sendTimeout = "Send Timeout";
   static const String receiveTimeout = "Receive Timeout";

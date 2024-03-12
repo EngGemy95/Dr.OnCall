@@ -3,6 +3,7 @@ import 'package:Dr/domain/repository/login_repository.dart';
 import 'package:Dr/domain/usecase/login_usecase.dart';
 import 'package:Dr/domain/usecase/register_usecase.dart';
 import 'package:Dr/presentation/bloc/register/register_bloc.dart';
+import 'package:Dr/presentation/bloc/switch_dark_mode/switch_dark_mode_bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
@@ -61,6 +62,7 @@ Future<void> initAppModule() async {
       () => SignInBloc(loginUseCase: instance(), appPreference: instance()));
   instance.registerFactory(() => PasswordVisibilityBloc());
   instance.registerFactory(() => RegisterBloc(registerUseCase: instance()));
+  instance.registerFactory(() => SwitchModeBloc());
 
   // UseCases instance
 

@@ -57,18 +57,18 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double statusBarHeight = MediaQuery.of(context).padding.top;
-    int _crossAxisCount = MediaQuery.of(context).size.width ~/ 200;
+    int crossAxisCount = MediaQuery.of(context).size.width ~/ 200;
 
     return Scaffold(
       body: Container(
         margin: EdgeInsets.only(top: statusBarHeight),
         child: SingleChildScrollView(
-          padding: EdgeInsets.only(top: AppPadding.p20),
+          padding: const EdgeInsets.only(top: AppPadding.p20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: AppPadding.p15),
+                padding: const EdgeInsets.symmetric(horizontal: AppPadding.p15),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -78,7 +78,7 @@ class HomePage extends StatelessWidget {
                       fontSize: AppSize.s25,
                       fontWeight: FontWeight.w500,
                     ),
-                    CircleAvatar(
+                    const CircleAvatar(
                       radius: AppSize.s25,
                       backgroundImage: AssetImage(ImageAssets.doctors),
                     ),
@@ -135,14 +135,14 @@ class HomePage extends StatelessWidget {
                     itemCount: symptoms.length,
                     itemBuilder: (context, index) {
                       return Container(
-                        margin: EdgeInsets.symmetric(
+                        margin: const EdgeInsets.symmetric(
                             horizontal: AppMargin.m15, vertical: AppMargin.m10),
-                        padding:
-                            EdgeInsets.symmetric(horizontal: AppPadding.p25),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: AppPadding.p25),
                         decoration: BoxDecoration(
                             color: ColorManager.greyWhite,
                             borderRadius: BorderRadius.circular(AppSize.s10),
-                            boxShadow: [
+                            boxShadow: const [
                               BoxShadow(
                                 color: ColorManager.black12,
                                 blurRadius: AppSize.s4,
@@ -152,7 +152,7 @@ class HomePage extends StatelessWidget {
                         child: Center(
                           child: Text(
                             symptoms[index],
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: AppSize.s16,
                               fontWeight: FontWeight.w500,
                               color: ColorManager.black54,
@@ -170,13 +170,13 @@ class HomePage extends StatelessWidget {
                 leftPadding: AppPadding.p15,
               ),
               GridView.builder(
-                padding: EdgeInsets.all(AppPadding.p0),
+                padding: const EdgeInsets.all(AppPadding.p0),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: _crossAxisCount,
+                  crossAxisCount: crossAxisCount,
                 ),
                 itemCount: 4,
                 shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) {
                   return InkWell(
                     onTap: () {
@@ -187,12 +187,13 @@ class HomePage extends StatelessWidget {
                       );
                     },
                     child: Container(
-                      margin: EdgeInsets.all(AppMargin.m10),
-                      padding: EdgeInsets.symmetric(vertical: AppPadding.p15),
+                      margin: const EdgeInsets.all(AppMargin.m10),
+                      padding:
+                          const EdgeInsets.symmetric(vertical: AppPadding.p15),
                       decoration: BoxDecoration(
                           color: ColorManager.white,
                           borderRadius: BorderRadius.circular(AppSize.s10),
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                               color: ColorManager.black12,
                               blurRadius: AppSize.s4,

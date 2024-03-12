@@ -8,11 +8,12 @@ Widget customListTile({
   required BoxShape boxShape,
   IconData? leadingIcon,
   Color? leadingIconColor,
-  double? leadingIconSize,
+  double? leadingIconSize = AppSize.s25,
   required String title,
   FontWeight? fontWeight,
-  double? titleFontSize,
+  double? titleFontSize = AppSize.s18,
   IconData? trailingIcon,
+  Widget? trailingWidget,
   Color? trailingIconColor,
   Color? titleColor,
   VoidCallback? onTapFunc,
@@ -20,7 +21,7 @@ Widget customListTile({
   return ListTile(
     onTap: onTapFunc,
     leading: Container(
-      padding: EdgeInsets.all(AppPadding.p10),
+      padding: const EdgeInsets.all(AppPadding.p5),
       decoration: BoxDecoration(
         color: decorationColor,
         shape: boxShape,
@@ -37,9 +38,10 @@ Widget customListTile({
       fontWeight: fontWeight,
       fontSize: titleFontSize,
     ),
-    trailing: Icon(
-      trailingIcon,
-      color: trailingIconColor,
-    ),
+    trailing: trailingWidget ??
+        Icon(
+          trailingIcon,
+          color: trailingIconColor,
+        ),
   );
 }
