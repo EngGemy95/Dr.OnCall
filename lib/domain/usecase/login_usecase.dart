@@ -1,5 +1,5 @@
-import 'package:Dr/data/requests/login_request.dart';
-import 'package:Dr/domain/repository/login_repository.dart';
+import 'package:dr_on_call/data/requests/login/login_request.dart';
+import 'package:dr_on_call/domain/repository/login_repository.dart';
 import 'package:dartz/dartz.dart';
 import '../../data/network/Failure.dart';
 import '../models/login/login_model.dart';

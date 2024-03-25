@@ -1,8 +1,8 @@
-import 'package:Dr/domain/usecase/register_usecase.dart';
+import 'package:dr_on_call/domain/usecase/register_usecase.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../data/requests/register_request.dart';
+import '../../../../data/requests/register_request.dart';
 
 part 'register_event.dart';
 part 'register_state.dart';

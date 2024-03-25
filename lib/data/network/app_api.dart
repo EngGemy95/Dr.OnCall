@@ -1,11 +1,15 @@
-import 'package:Dr/data/requests/register_request.dart';
-import 'package:Dr/data/response/login_response.dart';
-import 'package:Dr/data/response/RegisterResponse.dart';
+import 'dart:io';
+
+import 'package:dr_on_call/data/requests/register_request.dart';
+import 'package:dr_on_call/data/response/login/login_response.dart';
+import 'package:dr_on_call/data/response/register_response/RegisterResponse.dart';
 import 'package:dio/dio.dart';
-import 'package:retrofit/http.dart';
+import 'package:retrofit/retrofit.dart';
 
 import '../../app/constants.dart';
-import '../requests/login_request.dart';
+import '../requests/change_password/change_password_request.dart';
+import '../requests/login/login_request.dart';
+import '../response/profile/update_profile_response.dart';
 
 part 'app_api.g.dart';
 
@@ -18,4 +22,19 @@ abstract class AppServiceClient {
 
   @POST("users/login")
   Future<LoginResponse> login(@Body() LoginRequest loginRequest);
+
+  @POST("users/updateProfile")
+  @MultiPart()
+  Future<UpdateProfileResponse> updateProfile(
+    @Part(name: "name") String name,
+    @Part(name: "gender") String gender, {
+    @Part(name: "phone") String? phone,
+    @Part(name: "bloodType") String? bloodType,
+    @Part() File? image,
+    @SendProgress() ProgressCallback? onSendProgress,
+  });
+
+  @POST("users/changePassword")
+  Future<LoginResponse> changePassword(
+      @Body() ChangePasswordRequest changePasswordRequest);
 }

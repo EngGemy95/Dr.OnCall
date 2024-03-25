@@ -1,4 +1,4 @@
-import 'package:Dr/presentation/resource_data/style_manager.dart';
+import 'package:dr_on_call/presentation/resource_data/style_manager.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 

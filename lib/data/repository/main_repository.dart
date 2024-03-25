@@ -1,4 +1,4 @@
-import 'package:Dr/data/network/network_info.dart';
+import 'package:dr_on_call/data/network/network_info.dart';
 import 'package:dartz/dartz.dart';
 
 import '../network/Failure.dart';

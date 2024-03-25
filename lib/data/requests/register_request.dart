@@ -9,7 +9,7 @@ class RegisterRequest extends Equatable {
   final String password;
   final String phone;
 
-  RegisterRequest({
+  const RegisterRequest({
     required this.name,
     required this.email,
     required this.password,

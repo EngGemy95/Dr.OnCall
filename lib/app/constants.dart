@@ -12,4 +12,5 @@ class Constants {
 
   //Shared Preference Keys
   static const loginData = "Login Data";
+  static const tokenKey = "Token Key";
 }

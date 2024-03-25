@@ -1,8 +1,9 @@
-import 'package:Dr/presentation/resource_data/assets_manager.dart';
-import 'package:Dr/presentation/resource_data/color_manager.dart';
-import 'package:Dr/presentation/resource_data/values_managers.dart';
-import 'package:Dr/presentation/widgets/custom_reservation_card.dart';
-import 'package:Dr/presentation/widgets/custom_sized_box.dart';
+import 'package:dr_on_call/presentation/resource_data/assets_manager.dart';
+import 'package:dr_on_call/presentation/resource_data/color_manager.dart';
+import 'package:dr_on_call/presentation/resource_data/values_managers.dart';
+import 'package:dr_on_call/presentation/widgets/custom_avatar.dart';
+import 'package:dr_on_call/presentation/widgets/custom_reservation_card.dart';
+import 'package:dr_on_call/presentation/widgets/custom_sized_box.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../domain/models/doctors.dart';
@@ -203,14 +204,11 @@ class HomePage extends StatelessWidget {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          CircleAvatar(
-                            radius: AppSize.s35,
-                            backgroundImage:
-                                AssetImage(CustomPaths.imagePath + imgs[index]),
-                          ),
+                          customAvatar(
+                              radius: AppSize.s35, imageName: imgs[index]),
                           customSizedBox(heightSize: AppSize.s15),
                           customText(
-                            text: "Dr. Doctor NameDr ",
+                            text: "Dr. Doctor Name",
                             textColor: ColorManager.black,
                             fontSize: AppSize.s16,
                             leftPadding: AppPadding.p5,

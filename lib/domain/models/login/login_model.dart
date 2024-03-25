@@ -23,14 +23,6 @@ class LoginModel extends Equatable {
   String message;
   int status;
 
-  get getMessage => this.message;
-
-  set setMessage(message) => this.message = message;
-
-  get getStatus => this.status;
-
-  set setStatus(status) => this.status = status;
-
   final LoginData? data;
   LoginModel({required this.message, required this.status, this.data});
   factory LoginModel.fromJson(Map<String, dynamic> json) =>

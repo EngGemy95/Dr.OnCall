@@ -76,6 +76,101 @@ class _AppServiceClient implements AppServiceClient {
     return value;
   }
 
+  @override
+  Future<UpdateProfileResponse> updateProfile(
+    String name,
+    String gender, {
+    String? phone,
+    String? bloodType,
+    File? image,
+    void Function(int, int)? onSendProgress,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final _data = FormData();
+    _data.fields.add(MapEntry(
+      'name',
+      name,
+    ));
+    _data.fields.add(MapEntry(
+      'gender',
+      gender,
+    ));
+    if (phone != null) {
+      _data.fields.add(MapEntry(
+        'phone',
+        phone,
+      ));
+    }
+    if (bloodType != null) {
+      _data.fields.add(MapEntry(
+        'bloodType',
+        bloodType,
+      ));
+    }
+    if (image != null) {
+      _data.files.add(MapEntry(
+        'image',
+        MultipartFile.fromFileSync(
+          image.path,
+          filename: image.path.split(Platform.pathSeparator).last,
+        ),
+      ));
+    }
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<UpdateProfileResponse>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+      contentType: 'multipart/form-data',
+    )
+            .compose(
+              _dio.options,
+              'users/updateProfile',
+              queryParameters: queryParameters,
+              data: _data,
+              onSendProgress: onSendProgress,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = UpdateProfileResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<LoginResponse> changePassword(
+      ChangePasswordRequest changePasswordRequest) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(changePasswordRequest.toJson());
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<LoginResponse>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'users/changePassword',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = LoginResponse.fromJson(_result.data!);
+    return value;
+  }
+
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
     if (T != dynamic &&
         !(requestOptions.responseType == ResponseType.bytes ||

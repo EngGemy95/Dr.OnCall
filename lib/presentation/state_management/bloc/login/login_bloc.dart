@@ -1,9 +1,9 @@
-import 'package:Dr/app/app_prefs.dart';
+import 'package:dr_on_call/app/app_prefs.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../data/requests/login_request.dart';
-import '../../../domain/usecase/login_usecase.dart';
+import '../../../../data/requests/login/login_request.dart';
+import '../../../../domain/usecase/login_usecase.dart';
 
 part 'login_event.dart';
 part 'login_state.dart';
@@ -19,11 +19,11 @@ class SignInBloc extends Bloc<LoginEvent, SignInState> {
         emit(LoginLoadingState());
         final response = await loginUseCase.call(event.loginRequest);
         await response.fold((failure) {
-          print("errrrrrrrrrrorrrrrrrrrrrrr");
           emit(ErrorLoginState(message: failure.message));
         }, (apiModel) async {
-          print("Suuuuuuuuuuuuccccccrsssssssssssss");
           if (apiModel.status == 200) {
+          print(apiModel.data!.token!);
+            await appPreference.setToken(apiModel.data!.token!);
             await appPreference.setUserData(userData: apiModel.data!);
             emit(LoginSuccessState());
           } else {

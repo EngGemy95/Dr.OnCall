@@ -1,15 +1,15 @@
-import 'package:Dr/presentation/bloc/switch_dark_mode/switch_dark_mode_bloc.dart';
-import 'package:Dr/presentation/resource_data/assets_manager.dart';
-import 'package:Dr/presentation/resource_data/color_manager.dart';
-import 'package:Dr/presentation/resource_data/text_manager.dart';
-import 'package:Dr/presentation/resource_data/values_managers.dart';
-import 'package:Dr/presentation/widgets/customListTile.dart';
-import 'package:Dr/presentation/widgets/custom_sized_box.dart';
+import 'package:dr_on_call/presentation/state_management/bloc/switch_dark_mode/switch_dark_mode_bloc.dart';
+import 'package:dr_on_call/presentation/resource_data/assets_manager.dart';
+import 'package:dr_on_call/presentation/resource_data/color_manager.dart';
+import 'package:dr_on_call/presentation/resource_data/text_manager.dart';
+import 'package:dr_on_call/presentation/resource_data/values_managers.dart';
+import 'package:dr_on_call/presentation/widgets/custom_sized_box.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../app/di.dart' as di;
+import '../../../resource_data/route_manager.dart';
+import '../../../widgets/customListTile.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -41,7 +41,7 @@ class SettingsScreen extends StatelessWidget {
                     backgroundImage: AssetImage(ImageAssets.doctor1),
                   ),
                   title: customText(
-                    text: "Dr. Doctor Name",
+                    text: "dr_on_call. Doctor Name",
                     fontSize: AppSize.s20,
                     fontWeight: FontWeight.w500,
                     textColor: ColorManager.black,
@@ -75,7 +75,9 @@ class SettingsScreen extends StatelessWidget {
                 ),
                 customSizedBox(heightSize: AppMargin.m10),
                 customListTile(
-                  onTapFunc: () {},
+                  onTapFunc: () {
+                    Navigator.pushNamed(context, Routes.profile);
+                  },
                   decorationColor: ColorManager.blueShade100,
                   title: "Profile",
                   boxShape: BoxShape.circle,
@@ -87,7 +89,9 @@ class SettingsScreen extends StatelessWidget {
                 ),
                 customSizedBox(heightSize: AppMargin.m10),
                 customListTile(
-                  onTapFunc: () {},
+                  onTapFunc: () {
+                    Navigator.pushNamed(context, Routes.changePassword);
+                  },
                   decorationColor: ColorManager.indigoShade100,
                   title: "Change Password",
                   boxShape: BoxShape.circle,

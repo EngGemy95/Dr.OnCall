@@ -1,6 +1,6 @@
-import 'package:Dr/presentation/resource_data/color_manager.dart';
-import 'package:Dr/presentation/resource_data/style_manager.dart';
-import 'package:Dr/presentation/resource_data/values_managers.dart';
+import 'package:dr_on_call/presentation/resource_data/color_manager.dart';
+import 'package:dr_on_call/presentation/resource_data/style_manager.dart';
+import 'package:dr_on_call/presentation/resource_data/values_managers.dart';
 import 'package:flutter/cupertino.dart';
 
 class MessageDisplayWidget extends StatelessWidget {

@@ -1,9 +1,9 @@
-import 'package:Dr/data/repository/main_repository.dart';
-import 'package:Dr/data/requests/register_request.dart';
-import 'package:Dr/domain/models/register_model.dart';
+import 'package:dr_on_call/data/repository/main_repository.dart';
+import 'package:dr_on_call/data/requests/register_request.dart';
+import 'package:dr_on_call/domain/models/register_model.dart';
 import 'package:dartz/dartz.dart';
-import 'package:Dr/data/mapper/mapper.dart';
-import 'package:Dr/data/network/Failure.dart';
+import 'package:dr_on_call/data/mapper/mapper.dart';
+import 'package:dr_on_call/data/network/Failure.dart';
 import '../../domain/repository/register_repository.dart';
 import '../data_source/remote_data_source.dart';
 import '../network/network_info.dart';

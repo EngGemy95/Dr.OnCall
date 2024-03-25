@@ -17,6 +17,8 @@ class AppStrings {
   static const emailCantBeEmpty = "Email can't be empty";
   static const nameCantBeEmpty = "Name can't be empty";
   static const phoneCantBeEmpty = "Phone can't be empty";
+  static const save = "Save";
+  static const selectBloodType = "Select Blood Type";
 
   static const pleaseEnter = "please Enter";
   static const retryAgain = "Retry Again";

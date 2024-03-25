@@ -1,6 +1,6 @@
-import 'package:Dr/data/requests/register_request.dart';
-import 'package:Dr/domain/models/register_model.dart';
-import 'package:Dr/domain/repository/register_repository.dart';
+import 'package:dr_on_call/data/requests/register_request.dart';
+import 'package:dr_on_call/domain/models/register_model.dart';
+import 'package:dr_on_call/domain/repository/register_repository.dart';
 import 'package:dartz/dartz.dart';
 import '../../data/network/Failure.dart';
 

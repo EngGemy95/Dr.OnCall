@@ -1,18 +1,18 @@
-import 'package:Dr/app/functions.dart';
-import 'package:Dr/data/requests/login_request.dart';
-import 'package:Dr/presentation/bloc/password/password_visibility_bloc.dart';
-import 'package:Dr/presentation/resource_data/assets_manager.dart';
-import 'package:Dr/presentation/resource_data/color_manager.dart';
-import 'package:Dr/presentation/resource_data/font_manager.dart';
-import 'package:Dr/presentation/resource_data/style_manager.dart';
-import 'package:Dr/presentation/resource_data/values_managers.dart';
+import 'package:dr_on_call/app/functions.dart';
+import 'package:dr_on_call/data/requests/login/login_request.dart';
+import 'package:dr_on_call/presentation/state_management/bloc/password/password_visibility_bloc.dart';
+import 'package:dr_on_call/presentation/resource_data/assets_manager.dart';
+import 'package:dr_on_call/presentation/resource_data/color_manager.dart';
+import 'package:dr_on_call/presentation/resource_data/font_manager.dart';
+import 'package:dr_on_call/presentation/resource_data/style_manager.dart';
+import 'package:dr_on_call/presentation/resource_data/values_managers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../../../app/app_prefs.dart';
 import '../../../../app/di.dart' as di;
-import '../../../bloc/Login/login_bloc.dart';
 import '../../../resource_data/route_manager.dart';
 import '../../../resource_data/strings_manager.dart';
+import '../../../state_management/bloc/login/login_bloc.dart';
 import '../../../widgets/custom_text.dart';
 import '../../../widgets/custom_sized_box.dart';
 import '../../../widgets/custom_button.dart';
@@ -20,7 +20,7 @@ import '../../../widgets/custom_button.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppSignIn extends StatefulWidget {
-  AppSignIn({super.key});
+  const AppSignIn({super.key});
 
   @override
   State<AppSignIn> createState() => _AppSignInState();
@@ -81,7 +81,7 @@ class _AppSignInState extends State<AppSignIn> {
                     ),
                   ),
                   customSizedBox(heightSize: AppSize.s10),
-                  getTextField(
+                  customTextField(
                     paddingSize: AppSize.s10,
                     labelText: AppStrings.enterEmail,
                     isObscure: false,
@@ -96,7 +96,7 @@ class _AppSignInState extends State<AppSignIn> {
                   ),
                   BlocBuilder<PasswordVisibilityBloc, PasswordVisibilityState>(
                       builder: (context, state) {
-                    return getTextField(
+                    return customTextField(
                       paddingSize: AppSize.s10,
                       labelText: AppStrings.enterPassword,
                       isObscure: state is PasswordHidden,
@@ -126,7 +126,7 @@ class _AppSignInState extends State<AppSignIn> {
                   }),
                   customSizedBox(heightSize: AppSize.s20),
                   BlocListener<SignInBloc, SignInState>(
-                    child: getButton(
+                    child: customButton(
                       buttonText: AppStrings.login,
                       onTap: () {
                         validateFormThenLogin(context);

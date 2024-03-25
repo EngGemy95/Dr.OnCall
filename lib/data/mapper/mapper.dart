@@ -1,7 +1,9 @@
-import 'package:Dr/data/response/login_response.dart';
-import 'package:Dr/data/response/RegisterResponse.dart';
-import 'package:Dr/domain/models/login/login_model.dart';
-import 'package:Dr/domain/models/register_model.dart';
+import 'package:dr_on_call/data/response/login/login_response.dart';
+import 'package:dr_on_call/data/response/register_response/RegisterResponse.dart';
+import 'package:dr_on_call/data/response/profile/update_profile_response.dart';
+import 'package:dr_on_call/domain/models/login/login_model.dart';
+import 'package:dr_on_call/domain/models/profile_model.dart';
+import 'package:dr_on_call/domain/models/register_model.dart';
 import '../../app/constants.dart';
 import '../../app/extensions.dart';
 
@@ -40,6 +42,15 @@ extension LoginDataMapper on LoginDataResponse? {
     return LoginData(
       user: this?.user != null ? this!.user.toDomain() : null,
       token: this?.token != null ? this!.token : null,
+    );
+  }
+}
+
+extension UpdateProfileMapper on UpdateProfileResponse? {
+  ProfileModel toDomain() {
+    return ProfileModel(
+      code: this?.status.orZero() ?? Constants.zero,
+      message: this?.message.orEmpty() ?? Constants.empty,
     );
   }
 }

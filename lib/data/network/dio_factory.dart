@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:dr_on_call/app/app_prefs.dart';
+import 'package:dr_on_call/app/di.dart';
 import 'package:flutter/foundation.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import '../../app/constants.dart';
@@ -15,6 +17,13 @@ class DioFactory {
       contentType: applicationJson,
       accept: applicationJson,
     };
+
+    AppPreference prefs = instance<AppPreference>();
+    String? token = prefs.getToken();
+
+    if (token != null) {
+      headers['Authorization'] = 'Bearer $token'; // Add token to headers
+    }
 
     dio.options = BaseOptions(
       baseUrl: Constants.baseUrl,

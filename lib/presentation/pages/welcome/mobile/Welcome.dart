@@ -76,13 +76,13 @@ class WelcomeMobileScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    getButton(
+                    customButton(
                       buttonText: AppStrings.login,
                       onTap: () {
                         Navigator.pushNamed(context, Routes.login);
                       },
                     ),
-                    getButton(
+                    customButton(
                       buttonText: AppStrings.signUp,
                       onTap: () {
                         Navigator.pushNamed(context, Routes.register);

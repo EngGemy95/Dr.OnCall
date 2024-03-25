@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../resource_data/color_manager.dart';
 import '../resource_data/values_managers.dart';
 
-Widget getButton({
+Widget customButton({
   required VoidCallback onTap,
   required String buttonText,
 }) {

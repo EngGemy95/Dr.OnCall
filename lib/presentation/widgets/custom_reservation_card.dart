@@ -18,11 +18,11 @@ Widget customReservationCard({
   return InkWell(
     onTap: () {},
     child: Container(
-      padding: EdgeInsets.all(AppPadding.p20),
+      padding: const EdgeInsets.all(AppPadding.p20),
       decoration: BoxDecoration(
           color: containerColor,
           borderRadius: BorderRadius.circular(AppSize.s10),
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               color: Colors.black12,
               blurRadius: AppSize.s6,
@@ -33,7 +33,7 @@ Widget customReservationCard({
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            padding: EdgeInsets.all(AppPadding.p8),
+            padding: const EdgeInsets.all(AppPadding.p8),
             decoration: BoxDecoration(
               color: iconBackgroundColor,
               shape: BoxShape.circle,

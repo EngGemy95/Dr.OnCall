@@ -1,8 +1,7 @@
-import 'package:Dr/app/di.dart' as di;
-import 'package:Dr/presentation/bloc/Login/login_bloc.dart';
-import 'package:Dr/presentation/bloc/password/password_visibility_bloc.dart';
-import 'package:Dr/presentation/bloc/switch_dark_mode/switch_dark_mode_bloc.dart';
-import 'package:Dr/presentation/resource_data/color_manager.dart';
+import 'package:dr_on_call/app/di.dart' as di;
+import 'package:dr_on_call/presentation/state_management/bloc/current_home/current_home_bloc.dart';
+import 'package:dr_on_call/presentation/state_management/bloc/switch_dark_mode/switch_dark_mode_bloc.dart';
+import 'package:dr_on_call/presentation/resource_data/color_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -42,6 +41,9 @@ class _MyAppState extends State<MyApp> {
       providers: [
         BlocProvider(
           create: (context) => di.instance<SwitchModeBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => di.instance<CurrentHomeBloc>(),
         ),
       ],
       child: Sizer(builder: (context, orientation, deviceType) {

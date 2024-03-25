@@ -1,7 +1,7 @@
-import 'package:Dr/data/requests/register_request.dart';
-import 'package:Dr/presentation/bloc/password/password_visibility_bloc.dart';
-import 'package:Dr/presentation/bloc/register/register_bloc.dart';
-import 'package:Dr/presentation/widgets/custom_button.dart';
+import 'package:dr_on_call/data/requests/register_request.dart';
+import 'package:dr_on_call/presentation/state_management/bloc/password/password_visibility_bloc.dart';
+import 'package:dr_on_call/presentation/state_management/bloc/register/register_bloc.dart';
+import 'package:dr_on_call/presentation/widgets/custom_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -69,7 +69,7 @@ class _AppSingUpState extends State<AppSingUp> {
                 padding: const EdgeInsets.all(AppSize.s10),
                 child: Image.asset(ImageAssets.register),
               ),
-              getTextField(
+              customTextField(
                 paddingSize: AppSize.s10,
                 labelText: AppStrings.fullName,
                 isObscure: false,
@@ -80,7 +80,7 @@ class _AppSingUpState extends State<AppSingUp> {
                 },
                 controller: _fullNameTextEditControl,
               ),
-              getTextField(
+              customTextField(
                 paddingSize: AppSize.s10,
                 labelText: AppStrings.emailAddress,
                 isObscure: false,
@@ -91,7 +91,7 @@ class _AppSingUpState extends State<AppSingUp> {
                 },
                 controller: _emailTextEditControl,
               ),
-              getTextField(
+              customTextField(
                 paddingSize: AppSize.s10,
                 labelText: AppStrings.phoneNumber,
                 isObscure: false,
@@ -104,7 +104,7 @@ class _AppSingUpState extends State<AppSingUp> {
               ),
               BlocBuilder<PasswordVisibilityBloc, PasswordVisibilityState>(
                   builder: (context, state) {
-                return getTextField(
+                return customTextField(
                   paddingSize: AppSize.s10,
                   labelText: AppStrings.enterPassword,
                   isObscure: state is PasswordHidden,
@@ -134,7 +134,7 @@ class _AppSingUpState extends State<AppSingUp> {
               }),
               customSizedBox(heightSize: AppSize.s10),
               BlocListener<RegisterBloc, RegisterState>(
-                  child: getButton(
+                  child: customButton(
                     buttonText: AppStrings.createAccount,
                     onTap: () {
                       validateFormThenRegister(context);

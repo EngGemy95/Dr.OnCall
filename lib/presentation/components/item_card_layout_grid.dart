@@ -1,4 +1,4 @@
-import 'package:Dr/domain/models/doctors.dart';
+import 'package:dr_on_call/domain/models/doctors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 

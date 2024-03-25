@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../resource_data/values_managers.dart';
 
-Widget getTextField({
+Widget customTextField({
   double paddingSize = AppPadding.p10,
   required String labelText,
+  bool isEnabled = true,
   bool isObscure = false,
   required IconData prefixIcon,
   Widget? suffixIconChild,
@@ -19,6 +20,7 @@ Widget getTextField({
       onTap: onTapTextField,
       controller: controller,
       validator: validator,
+      enabled: isEnabled,
       // onChanged: (value) {
       //   controller?.text = value;
       // },
