@@ -143,16 +143,16 @@ class _AppServiceClient implements AppServiceClient {
   }
 
   @override
-  Future<LoginResponse> changePassword(
-      ChangePasswordRequest changePasswordRequest) async {
+  Future<UpdatePasswordResponse> updatePassword(
+      UpdatePasswordRequest changePasswordRequest) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(changePasswordRequest.toJson());
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<LoginResponse>(Options(
-      method: 'POST',
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<UpdatePasswordResponse>(Options(
+      method: 'PATCH',
       headers: _headers,
       extra: _extra,
     )
@@ -167,7 +167,7 @@ class _AppServiceClient implements AppServiceClient {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = LoginResponse.fromJson(_result.data!);
+    final value = UpdatePasswordResponse.fromJson(_result.data!);
     return value;
   }
 

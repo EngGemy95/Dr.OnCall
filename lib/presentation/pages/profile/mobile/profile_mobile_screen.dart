@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'dart:typed_data';
 
-import 'package:dr_on_call/app/functions.dart';
+import 'package:dr_on_call/utils/functions.dart';
 import 'package:dr_on_call/presentation/state_management/bloc/gender/gender_bloc.dart';
 import 'package:dr_on_call/presentation/resource_data/color_manager.dart';
 import 'package:dr_on_call/presentation/resource_data/font_manager.dart';

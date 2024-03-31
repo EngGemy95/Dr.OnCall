@@ -7,7 +7,7 @@ import 'package:dr_on_call/presentation/widgets/custom_sized_box.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../domain/models/doctors.dart';
-import '../../../resource_data/route_manager.dart';
+import '../../../../config/route_manager.dart';
 import '../../../resource_data/text_manager.dart';
 
 class HomePage extends StatelessWidget {

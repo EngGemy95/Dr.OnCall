@@ -8,7 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../resource_data/route_manager.dart';
+import '../../../../config/route_manager.dart';
 import '../../../widgets/customListTile.dart';
 
 class SettingsScreen extends StatelessWidget {

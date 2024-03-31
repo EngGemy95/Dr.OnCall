@@ -1,4 +1,4 @@
-import 'package:dr_on_call/app/responsive.dart';
+import 'package:dr_on_call/utils/responsive.dart';
 import 'package:dr_on_call/presentation/pages/welcome/mobile/welcome.dart';
 import 'package:flutter/material.dart';
 

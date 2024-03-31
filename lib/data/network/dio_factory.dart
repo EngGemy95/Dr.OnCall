@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
-import 'package:dr_on_call/app/app_prefs.dart';
-import 'package:dr_on_call/app/di.dart';
+import 'package:dr_on_call/utils/app_prefs.dart';
+import 'package:dr_on_call/utils/di.dart';
 import 'package:flutter/foundation.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
-import '../../app/constants.dart';
+import '../../utils/constants.dart';
 
 const String applicationJson = "application/json";
 const String contentType = "Content-Type";
@@ -31,8 +31,8 @@ class DioFactory {
       receiveTimeout: const Duration(milliseconds: Constants.apiTimeOut),
       sendTimeout: const Duration(milliseconds: Constants.apiTimeOut),
       validateStatus: (status) {
-        // Allow status codes 200 and 400
-        return status == 200 || status == 400 || status == 301;
+        // Allow status codes 200 and 1000
+        return status! < 600;
       },
     );
 

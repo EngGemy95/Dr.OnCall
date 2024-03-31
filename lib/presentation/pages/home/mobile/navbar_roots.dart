@@ -6,7 +6,7 @@ import 'package:dr_on_call/presentation/state_management/bloc/current_home/curre
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../app/di.dart' as di;
+import '../../../../utils/di.dart' as di;
 
 class NavBarRoots extends StatefulWidget {
   const NavBarRoots({super.key});

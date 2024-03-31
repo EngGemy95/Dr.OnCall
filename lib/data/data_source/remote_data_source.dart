@@ -1,11 +1,12 @@
 import 'dart:io';
 
-import 'package:dr_on_call/data/requests/change_password/change_password_request.dart';
 import 'package:dr_on_call/data/requests/register_request.dart';
 import 'package:dr_on_call/data/response/register_response/RegisterResponse.dart';
 import 'package:dr_on_call/data/response/profile/update_profile_response.dart';
+import 'package:dr_on_call/data/response/update_password/update_password_response.dart';
 import '../network/app_api.dart';
 import '../requests/login/login_request.dart';
+import '../requests/update_password/update_password_request.dart';
 import '../response/login/login_response.dart';
 
 abstract class RemoteDataSource {
@@ -18,8 +19,8 @@ abstract class RemoteDataSource {
     String? phone,
     File? image,
   });
-  Future<LoginResponse> updatePassword(
-      ChangePasswordRequest changePasswordRequest);
+  Future<UpdatePasswordResponse> updatePassword(
+      UpdatePasswordRequest updatePasswordRequest);
 }
 
 class RemoteDataSourceImpl extends RemoteDataSource {
@@ -55,8 +56,8 @@ class RemoteDataSourceImpl extends RemoteDataSource {
   }
 
   @override
-  Future<LoginResponse> updatePassword(
-      ChangePasswordRequest changePasswordRequest) async {
-    return await _appServiceClient.changePassword(changePasswordRequest);
+  Future<UpdatePasswordResponse> updatePassword(
+      UpdatePasswordRequest updatePasswordRequest) async {
+    return await _appServiceClient.updatePassword(updatePasswordRequest);
   }
 }

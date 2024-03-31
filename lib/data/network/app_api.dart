@@ -6,10 +6,11 @@ import 'package:dr_on_call/data/response/register_response/RegisterResponse.dart
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 
-import '../../app/constants.dart';
-import '../requests/change_password/change_password_request.dart';
+import '../../utils/constants.dart';
 import '../requests/login/login_request.dart';
+import '../requests/update_password/update_password_request.dart';
 import '../response/profile/update_profile_response.dart';
+import '../response/update_password/update_password_response.dart';
 
 part 'app_api.g.dart';
 
@@ -34,7 +35,7 @@ abstract class AppServiceClient {
     @SendProgress() ProgressCallback? onSendProgress,
   });
 
-  @POST("users/changePassword")
-  Future<LoginResponse> changePassword(
-      @Body() ChangePasswordRequest changePasswordRequest);
+  @PATCH("users/changePassword")
+  Future<UpdatePasswordResponse> updatePassword(
+      @Body() UpdatePasswordRequest changePasswordRequest);
 }

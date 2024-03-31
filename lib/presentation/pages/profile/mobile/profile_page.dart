@@ -1,5 +1,5 @@
-import 'package:dr_on_call/app/di.dart';
-import 'package:dr_on_call/app/responsive.dart';
+import 'package:dr_on_call/utils/di.dart';
+import 'package:dr_on_call/utils/responsive.dart';
 import 'package:dr_on_call/presentation/state_management/bloc/gender/gender_bloc.dart';
 import 'package:dr_on_call/presentation/pages/profile/mobile/profile_mobile_screen.dart';
 import 'package:dr_on_call/presentation/state_management/cubit/image_cubit.dart';

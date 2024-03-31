@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:dr_on_call/app/constants.dart';
+import 'package:dr_on_call/utils/constants.dart';
 import 'package:dr_on_call/domain/models/login/login_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../presentation/resource_data/strings_manager.dart';

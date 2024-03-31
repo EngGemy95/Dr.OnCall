@@ -1,7 +1,6 @@
 import 'package:dr_on_call/presentation/resource_data/color_manager.dart';
 import 'package:dr_on_call/presentation/resource_data/values_managers.dart';
 import 'package:dr_on_call/presentation/widgets/custom_sized_box.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class LoadingWidget extends StatelessWidget {

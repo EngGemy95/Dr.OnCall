@@ -17,13 +17,20 @@ void showScaffoldMessenger(
   ScaffoldMessenger.of(ctx).showSnackBar(SnackBar(
     content: Text(
       message,
-      style: TextStyle(color: ColorManager.white),
+      style: const TextStyle(color: ColorManager.white),
     ),
     backgroundColor: bgColor,
   ));
 }
 
 //-----------------------------------------
+
+closeKeyboardIfOpened(BuildContext context) {
+  FocusScopeNode currentFocus = FocusScope.of(context);
+  if (!currentFocus.hasPrimaryFocus) {
+    currentFocus.requestFocus(FocusNode());
+  }
+}
 
 //check if any dialog open or not
 _isCurrentDialogShowing(BuildContext context) {

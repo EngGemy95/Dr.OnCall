@@ -6,7 +6,7 @@ class DoctorModel extends Equatable {
   final String img;
   final int star;
 
-  DoctorModel({
+  const DoctorModel({
     required this.name,
     required this.specialty,
     required this.img,

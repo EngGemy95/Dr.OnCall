@@ -1,4 +1,4 @@
-import 'package:dr_on_call/app/di.dart' as di;
+import 'package:dr_on_call/utils/di.dart' as di;
 import 'package:dr_on_call/presentation/state_management/bloc/password/password_visibility_bloc.dart';
 import 'package:dr_on_call/presentation/state_management/bloc/register/register_bloc.dart';
 import 'package:dr_on_call/presentation/pages/register/mobile/register_screen.dart';

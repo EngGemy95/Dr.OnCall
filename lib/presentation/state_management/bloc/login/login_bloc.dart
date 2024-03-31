@@ -1,4 +1,4 @@
-import 'package:dr_on_call/app/app_prefs.dart';
+import 'package:dr_on_call/utils/app_prefs.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

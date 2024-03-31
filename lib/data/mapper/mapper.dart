@@ -4,8 +4,10 @@ import 'package:dr_on_call/data/response/profile/update_profile_response.dart';
 import 'package:dr_on_call/domain/models/login/login_model.dart';
 import 'package:dr_on_call/domain/models/profile_model.dart';
 import 'package:dr_on_call/domain/models/register_model.dart';
-import '../../app/constants.dart';
-import '../../app/extensions.dart';
+import '../../domain/models/change_password/change_password_model.dart';
+import '../../utils/constants.dart';
+import '../../utils/extensions.dart';
+import '../response/update_password/update_password_response.dart';
 
 extension RegisterMapper on RegisterResponse? {
   RegisterModel toDomain() {
@@ -50,6 +52,15 @@ extension UpdateProfileMapper on UpdateProfileResponse? {
   ProfileModel toDomain() {
     return ProfileModel(
       code: this?.status.orZero() ?? Constants.zero,
+      message: this?.message.orEmpty() ?? Constants.empty,
+    );
+  }
+}
+
+extension UpdatePasswordMapper on UpdatePasswordResponse? {
+  UpdatePasswordModel toDomain() {
+    return UpdatePasswordModel(
+      status: this?.status.orZero() ?? Constants.zero,
       message: this?.message.orEmpty() ?? Constants.empty,
     );
   }

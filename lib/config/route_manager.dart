@@ -5,8 +5,8 @@ import 'package:dr_on_call/presentation/pages/profile/mobile/profile_page.dart';
 import 'package:dr_on_call/presentation/pages/register/mobile/register_page.dart';
 import 'package:dr_on_call/presentation/pages/welcome/mobile/welcome_page.dart';
 import 'package:flutter/material.dart';
-import '../pages/home/mobile/navbar_roots.dart';
-import '../resource_data/strings_manager.dart';
+import '../presentation/pages/home/mobile/navbar_roots.dart';
+import '../presentation/resource_data/strings_manager.dart';
 
 class Routes {
   static const String welcome = "/";
